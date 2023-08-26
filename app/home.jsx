@@ -1,48 +1,43 @@
 'use client'
 
 import ReactFullpage from "@fullpage/react-fullpage"
+import { Landing, Venue, RSVP } from "components"
 
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 const pluginWrapper = () => {
     /*
     * require('../static/fullpage.scrollHorizontally.min.js'); // Optional. Required when using the "scrollHorizontally" extension.
     */
-};
+}
 
-export default function HomePage({ venues }) {
-    const fullpages = [
-        {
-            text: "Section 1"
-        },
-        {
-            text: "Section 2"
-        },
-        {
-            text: 'Section 3',
-        }
+export default function HomePage({ venues, images }) {
+    const ele = [
+        Landing,
+        Venue,
+        RSVP
     ]
 
     return (
         <div>
             <ReactFullpage
                 navigation
-                // pluginWrapper={pluginWrapper}
-                scrollHorizontally = {true}
+                pluginWrapper={pluginWrapper}
                 render={comp =>
                     console.log("render prop change") || (
                         <ReactFullpage.Wrapper>
-                            {fullpages.map(({ text }) => (
-                                <div key={text} className="section">
-                                    <h1>{text}</h1>
-                                </div>
-                            ))}
+                            <div key="1" id="Landing" className="section">
+                                <Landing images={images} />
+                            </div>
+                            <div key="2" id="Venue" className="section">
+                                <Venue venues={venues} />
+                            </div>
+                            <div key="3" id="RSVP" className="section">
+                                <RSVP />
+                            </div>
                         </ReactFullpage.Wrapper>
                     )
                 }
             />
-            {venues.map((post) => (
-                <div key={post.id}>{post.label}</div>
-            ))}
         </div>
     )
 }

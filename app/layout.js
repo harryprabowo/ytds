@@ -1,4 +1,5 @@
 import { Inter, Ribeye } from 'next/font/google'
+import "bootstrap/dist/css/bootstrap.min.css"
 import 'styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
