@@ -18,22 +18,39 @@ export const IMAGES = [
 ]
 
 const getImages = async (image_filename) => {
-  const { data: { publicUrl } } = await client.storage.from('media').getPublicUrl(`wedding/${image_filename}`)
+  const { data: { publicUrl }, error } = await client
+    .storage
+    .from('media')
+    .getPublicUrl(`wedding/${image_filename}`)
+  
   return publicUrl
 }
 
 const getVenues = async () => {
-  const { data: venues } = await client.from('venue').select()
+  const { data: venues, error } = await client
+    .from('venue')
+    .select()
+  
   return venues
 }
 
 const getDiet = async () => {
-  const { data: diets } = await client.from('diet').select()
+  const { data: diets, error } = await client
+    .from('diet')
+    .select()
+  
   return diets
 }
 
 const submitRSVP = async () => {
-  
+  const { data, error } = await client
+    .from('rsvp')
+    .insert([
+      { some_column: 'someValue', other_column: 'otherValue' },
+    ])
+    .select()
+
+  return data
 }
 
 export default async function Page() {

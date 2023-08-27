@@ -6,8 +6,8 @@ import 'styles/base.scss'
 const font = Playfair_Display({subsets: ['latin']})
 
 export const metadata = {
-  title: 'YTDS',
-  description: 'You Tien Hoe & Desy Indahsari',
+  title: 'Wedding | You Tien Hoe & Desy Indahsari',
+  description: 'Wedding: You Tien Hoe & Desy Indahsari',
 }
 
 const RootLayout = ({ children }) => (
