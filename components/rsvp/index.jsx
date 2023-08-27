@@ -2,18 +2,67 @@ import { Great_Vibes, Playfair_Display, Playfair_Display_SC, Cinzel_Decorative }
 import { useForm, Controller } from "react-hook-form"
 import { ErrorMessage } from "@hookform/error-message"
 import { Form, FloatingLabel, Row, Col, Button } from 'react-bootstrap'
-import Select, { components } from 'react-select'
+import Select, { StylesConfig } from 'react-select'
 import makeAnimated from 'react-select/animated';
 import { useEffect, useState } from "react";
 import "styles/rsvp.scss"
 
 const greatVibes = Cinzel_Decorative({ subsets: ['latin'], weight: ['700'] })
 
-const RSVPForm = ({ venues, diets }) => {
-    const [dietsSelected, setDietsSelected] = useState([])
-    const { register, handleSubmit, formState: { errors }, control } = useForm();
-    const onSubmit = data => console.log(data);
+const colourStyles = {
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+        return {
+            ...styles,
+            backgroundColor: isDisabled
+                ? undefined
+                : '#222',
+            color: isDisabled
+                ? '#aaa'
+                : '#ccc',
+            cursor: isDisabled ? 'not-allowed' : 'default',
 
+            ':hover': {
+                ...styles[':hover'],
+                backgroundColor: !isDisabled
+                    ? '#111'
+                    : undefined,
+            },
+
+            ':active': {
+                ...styles[':active'],
+                backgroundColor: !isDisabled
+                    ? '#111'
+                    : undefined,
+            },
+        };
+    },
+    multiValue: (styles, { data }) => {
+        return {
+            ...styles,
+            backgroundColor: '#333',
+        };
+    },
+    multiValueLabel: (styles, { data }) => ({
+        ...styles,
+        color: 'white',
+    }),
+    multiValueRemove: (styles, { data }) => ({
+        ...styles,
+        ':hover': {
+            backgroundColor: '#222',
+            color: 'white',
+        },
+    }),
+};
+
+
+const RSVPForm = ({ venues, diets }) => {
+    // const [dietsSelected, setDietsSelected] = useState([])
+    const { register, handleSubmit, formState: { errors }, control } = useForm();
+    const onSubmit = data => {
+        console.log(data)
+    }
+    
     const venueOptions = venues.map(({ id, label }) => ({
         value: id,
         label
@@ -72,7 +121,7 @@ const RSVPForm = ({ venues, diets }) => {
                     <Form.Group controlId="venue">
                         <Form.Label>Venues</Form.Label>
                         <Controller
-                            name="Venue"
+                            name="venue"
                             control={control}
                             rules={{ required: 'Are you not coming?' }}
                             render={({ field }) => (
@@ -84,17 +133,18 @@ const RSVPForm = ({ venues, diets }) => {
                                     classNamePrefix="addl-class"
                                     components={makeAnimated()}
                                     options={venueOptions}
+                                    styles={colourStyles}
                                 />
                             )}
                         />
                         <Form.Text muted>
-                            <ErrorMessage errors={errors} name="Venue" />
+                            <ErrorMessage errors={errors} name="venue" />
                         </Form.Text>
                     </Form.Group>
                     <Form.Group controlId="diet">
                         <Form.Label>Diet</Form.Label>
                         <Controller
-                            name="Diet"
+                            name="diet"
                             control={control}
                             render={({ field }) => (
                                 <Select
@@ -105,20 +155,23 @@ const RSVPForm = ({ venues, diets }) => {
                                     classNamePrefix="addl-class"
                                     components={makeAnimated()}
                                     options={dietOptions}
-                                    onChange={e => {
-                                        setDietsSelected(e.map(f => f.label))
-                                    }}
+                                    styles={colourStyles}
+                                    // onChange={e => {
+                                    //     setDietsSelected(e.map(f => f.label))
+                                    // }}
                                 />
                             )}
                         />
                         <Form.Text muted>
                             {/* {dietDetails(dietsSelected)} */}
-                            <ErrorMessage errors={errors} name="Venue" />
+                            <ErrorMessage errors={errors} name="diet" />
                         </Form.Text>
                     </Form.Group>
                     <br />
-                    <hr />
-                    <br/>
+                </Col>
+            </Row>
+            <Row>
+                <Col style={{textAlign:'center'}}>
                     <Button type="submit" variant="warning" size="lg" block>SUBMIT</Button>
                 </Col>
             </Row>
@@ -130,10 +183,11 @@ const RSVPForm = ({ venues, diets }) => {
 const RSVP = (props) => {
     return (
         <div className="rsvp-container">
-            <h1 className={greatVibes.className}>Répondez s'il vous plaît</h1>
+            <h1 className={greatVibes.className}>꧁Répondez s'il vous plaît꧂</h1>
             <br/>
             <Row style={{margin: 0}}>
-                <Col md={11} xs={12}>
+                <Col />
+                <Col md={9} xs={12}>
                     <div className="rsvp-form-container" >
                         <RSVPForm {...props} />
                     </div>

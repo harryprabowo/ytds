@@ -30,8 +30,8 @@ export default function HomePage({ venues, images, diets }) {
                             <div key="2" id="Message" className="section">
                                 <Message venues={venues} />
                             </div>
-                            <div key="3" id="RSVP" className="section">
-                                <RSVP venues={venues} diets={diets} />
+                            <div key="3" id="RSVP" className="section dark-section">
+                                <RSVP venues={venues} diets={diets}  />
                             </div>
                             <div key="4" id="Footer" className="section" style={{height: '30vh'}}>
                                 <Footer />

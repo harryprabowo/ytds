@@ -34,7 +34,7 @@ const Text = () => (
         <h1 className={cinzel.className} style={{ fontSize: '12pt' }}>
             <Typewriter
                 words={theText}
-                loop={5}
+                loop={false}
                 cursor
                 cursorStyle='_'
                 typeSpeed={70}

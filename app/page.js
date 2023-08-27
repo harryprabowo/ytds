@@ -32,6 +32,10 @@ const getDiet = async () => {
   return diets
 }
 
+const submitRSVP = async () => {
+  
+}
+
 export default async function Page() {
   // Fetch data directly in a Server Component
   const venues = await getVenues()

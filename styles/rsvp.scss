@@ -1,19 +1,56 @@
 .rsvp-container{
     h1 {
-        font-size: 30pt;
+        font-size: 20pt;
+        margin: 1em 0.5em;
+        text-align: center;
     }
 
     padding: 0 3rem;
 
+    div[class^="col"] > div {
+        margin-bottom: 1em;
+    }
+
     form {
-        .css-13cymwt-control {
-            height: 3em;
-            margin-bottom: 1em;
+        .css-13cymwt-control, .addl-class__control {
+            height: 2em;
+            border-radius: 0;
+            background-color: transparent;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
         }
 
-        button {
-            width: 100%;
+        button:hover {
+            background-color: #ffd4a3;
         }
+
+        label {
+            font-variant: small-caps;
+            // font-weight: 500;
+        }
+
+        .text-muted {
+            color: white !important
+        }
+    }
+
+    input {
+        padding: 0;
+        font-weight: bold;
+    }
+
+    input:focus, .addl-class__control--is-focused {
+        outline: none !important;
+        outline-width: 0 !important;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        border-color: #ffd4a3 !important;
+    }
+
+    .addl-class__menu {
+        background-color: #222;
     }
 }
 

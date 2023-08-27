@@ -5,3 +5,7 @@
 .fp-watermark {
   display: none
 }
+
+#fp-nav span {
+  background-color: #aaa !important
+}
