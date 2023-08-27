@@ -13,7 +13,29 @@ const Text = ({venue, date}) => {
     return (
         <blockquote >
             <div>
-                <span className="bolding super">Dearest&nbsp;<TextScramble className="text-scramble" texts={texts} />,</span>
+                <span className="bolding super">
+                    Dearest&nbsp;
+                    <TextScramble
+                        autoStart
+                        className="text-scramble"
+                        texts={texts}
+                        letterSpeed={100}
+                        nextLetterSpeed={100}
+                        steps={[
+                            {
+                                roll: 20,
+                                action: '+',
+                                type: 'all',
+                            },
+                            {
+                                action: '-',
+                                type: 'forward',
+                            },
+                        ]}
+                        pauseTime={1000}
+                    />
+                    ,
+                </span>
             </div>
             <br />
             <div>

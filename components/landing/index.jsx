@@ -9,7 +9,7 @@ import TextScramble from '@twistezo/react-text-scramble'
 import { Typewriter } from 'react-simple-typewriter'
 
 const OPTIONS = { loop: true }
-const greatVibes = Great_Vibes({ subsets: ['latin'], weight: ['400'] })
+const greatVibes = Cinzel_Decorative({ subsets: ['latin'], weight: ['700'] })
 const cinzel = Playfair_Display({ subsets: ['latin'], weight: ['400'] })
 
 const theText = [
@@ -43,7 +43,7 @@ const Text = () => (
             />
         </h1>
         <br/>
-        <h1 className={greatVibes.className} style={{ fontSize: '36pt' }}>You Tien Hoe<br className="brbr" /> & <br className="brbr" />Desy Indahsari</h1>
+        <h1 className={greatVibes.className} style={{ fontSize: '24pt' }}>You Tien Hoe<br className="brbr" /> & <br className="brbr" />Desy Indahsari</h1>
         <Image alt="divider" src="https://static.vecteezy.com/system/resources/previews/012/634/581/non_2x/art-deco-outline-stroke-in-golden-color-for-classy-and-luxury-style-premium-vintage-line-art-design-element-free-png.png" height={0} width={300} />
     </div>
 )

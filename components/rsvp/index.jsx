@@ -1,24 +1,146 @@
-import { useForm } from "react-hook-form"
+import { Great_Vibes, Playfair_Display, Playfair_Display_SC, Cinzel_Decorative } from 'next/font/google'
+import { useForm, Controller } from "react-hook-form"
+import { ErrorMessage } from "@hookform/error-message"
+import { Form, FloatingLabel, Row, Col, Button } from 'react-bootstrap'
+import Select, { components } from 'react-select'
+import makeAnimated from 'react-select/animated';
+import { useEffect, useState } from "react";
+import "styles/rsvp.scss"
 
-const RSVP = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+const greatVibes = Cinzel_Decorative({ subsets: ['latin'], weight: ['700'] })
+
+const RSVPForm = ({ venues, diets }) => {
+    const [dietsSelected, setDietsSelected] = useState([])
+    const { register, handleSubmit, formState: { errors }, control } = useForm();
     const onSubmit = data => console.log(data);
 
-    console.log(watch("example")); // watch input value by passing the name of it
+    const venueOptions = venues.map(({ id, label }) => ({
+        value: id,
+        label
+    }))
+
+    const dietOptions = diets.map(({ id, name, desc }) => ({
+        value: id,
+        label: name,
+
+    }))
+
+    const dietDetails = (_dietsSelected) => {
+        return (
+            <ul>
+                {_dietsSelected.map((e, i) => (
+                    <li key={i}>{diets.find(({ name }) => name === e).desc}</li>
+                ))}
+            </ul>
+        )
+    }
 
     return (
-        /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-        <form onSubmit={handleSubmit(onSubmit)}>
-            {/* register your input into the hook by invoking the "register" function */}
-            <input defaultValue="test" {...register("example")} />
+        <Form onSubmit={handleSubmit(onSubmit)}>
+            <Row>
+                <Col>
+                    <Form.Group controlId="fullName">
+                        <Form.Label>Full name</Form.Label>
+                        <Form.Control className="css-13cymwt-control" type="text" name="Full name" {...register("fullName", { required: 'We would love to know our esteemed guest' })} />
+                        <Form.Text muted>
+                            <ErrorMessage errors={errors} name="fullName" />
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group controlId="email">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control className="css-13cymwt-control" type="email" name="Email" {...register("email", { required: 'We would love to send our invitation card', pattern: /^\S+@\S+$/i })} />
+                        <Form.Text muted>
+                            <ErrorMessage errors={errors} name="email" />
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group controlId="contact">
+                        <Form.Label>Contact</Form.Label>
+                        <Form.Control className="css-13cymwt-control" type="tel" name="Contact" {...register("contact", { required: 'We require your contact to confirm your RSVP', minLength: 6, maxLength: 12 })} />
+                        <Form.Text muted>
+                            <ErrorMessage errors={errors} name="contact" />
+                        </Form.Text>
+                    </Form.Group>
+                </Col>
+                <Col md={4} xs={12}>
+                    <Form.Group controlId="partySize">
+                        <Form.Label>Party size</Form.Label>
+                        <Form.Control className="css-13cymwt-control" type="number" name="Party" defaultValue={1} min={1} max={20} {...register("partySize", { required: 'We would love to know your party size', min: 1, max: 20 })} />
+                        <Form.Text muted>
+                            <ErrorMessage errors={errors} name="partySize" />
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group controlId="venue">
+                        <Form.Label>Venues</Form.Label>
+                        <Controller
+                            name="Venue"
+                            control={control}
+                            rules={{ required: 'Are you not coming?' }}
+                            render={({ field }) => (
+                                <Select
+                                    {...field}
+                                    isClearable
+                                    isMulti
+                                    closeMenuOnSelect={false}
+                                    classNamePrefix="addl-class"
+                                    components={makeAnimated()}
+                                    options={venueOptions}
+                                />
+                            )}
+                        />
+                        <Form.Text muted>
+                            <ErrorMessage errors={errors} name="Venue" />
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group controlId="diet">
+                        <Form.Label>Diet</Form.Label>
+                        <Controller
+                            name="Diet"
+                            control={control}
+                            render={({ field }) => (
+                                <Select
+                                    {...field}
+                                    isClearable
+                                    isMulti
+                                    closeMenuOnSelect={false}
+                                    classNamePrefix="addl-class"
+                                    components={makeAnimated()}
+                                    options={dietOptions}
+                                    onChange={e => {
+                                        setDietsSelected(e.map(f => f.label))
+                                    }}
+                                />
+                            )}
+                        />
+                        <Form.Text muted>
+                            {/* {dietDetails(dietsSelected)} */}
+                            <ErrorMessage errors={errors} name="Venue" />
+                        </Form.Text>
+                    </Form.Group>
+                    <br />
+                    <hr />
+                    <br/>
+                    <Button type="submit" variant="warning" size="lg" block>SUBMIT</Button>
+                </Col>
+            </Row>
 
-            {/* include validation with required or other standard HTML validation rules */}
-            <input {...register("exampleRequired", { required: true })} />
-            {/* errors will return when field validation fails  */}
-            {errors.exampleRequired && <span>This field is required</span>}
+        </Form>
+    );
+}
 
-            <input type="submit" />
-        </form>
+const RSVP = (props) => {
+    return (
+        <div className="rsvp-container">
+            <h1 className={greatVibes.className}>Répondez s'il vous plaît</h1>
+            <br/>
+            <Row style={{margin: 0}}>
+                <Col md={11} xs={12}>
+                    <div className="rsvp-form-container" >
+                        <RSVPForm {...props} />
+                    </div>
+                </Col>
+                <Col />
+            </Row>
+        </div>
     )
 }
 

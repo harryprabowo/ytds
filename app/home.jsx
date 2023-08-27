@@ -9,7 +9,7 @@ const pluginWrapper = () => {
     */
 }
 
-export default function HomePage({ venues, images }) {
+export default function HomePage({ venues, images, diets }) {
     const ele = [
         Landing,
         Venue,
@@ -31,9 +31,9 @@ export default function HomePage({ venues, images }) {
                                 <Message venues={venues} />
                             </div>
                             <div key="3" id="RSVP" className="section">
-                                <RSVP />
+                                <RSVP venues={venues} diets={diets} />
                             </div>
-                            <div key="4" id="Footer" className="section">
+                            <div key="4" id="Footer" className="section" style={{height: '30vh'}}>
                                 <Footer />
                             </div>
                         </ReactFullpage.Wrapper>

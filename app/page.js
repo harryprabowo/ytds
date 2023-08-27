@@ -22,15 +22,20 @@ const getImages = async (image_filename) => {
   return publicUrl
 }
 
-async function getVenues() {
-  const {data: venues} = await client.from('venue').select()
+const getVenues = async () => {
+  const { data: venues } = await client.from('venue').select()
   return venues
+}
+
+const getDiet = async () => {
+  const { data: diets } = await client.from('diet').select()
+  return diets
 }
 
 export default async function Page() {
   // Fetch data directly in a Server Component
   const venues = await getVenues()
-  const images = await Promise.all(IMAGES.map(async ({name, style}) => {
+  const images = await Promise.all(IMAGES.map(async ({ name, style }) => {
     let src = await getImages(name)
     return {
       name,
@@ -38,9 +43,10 @@ export default async function Page() {
       style
     }
   }))
-  
+  const diets = await getDiet()
+
   // Forward fetched data to your Client Component
   return (
-    <HomePage venues={venues} images={images} />
+    <HomePage venues={venues} images={images} diets={diets} />
   )
 }
