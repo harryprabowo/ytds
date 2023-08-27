@@ -1,0 +1,72 @@
+.message {
+    blockquote {
+        quotes: "\201C" "\201D" "\2018" "\2019";
+        padding-left: 2em;
+
+        @media(max-width: 768px) {
+            margin-right: 10em;
+    
+            .bolding {
+                font-size: 15pt;
+    
+                &.super {
+                    font-size: 25pt;
+                    line-height: 30pt;
+                }
+            }
+        }
+    }
+
+    blockquote:before {
+        color: #ffd4a3;
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+
+        @media(max-width: 768px) {
+            font-size: 2em;
+        }
+    }
+
+    blockquote p {
+        display: inline;
+    }
+
+    .bolding {
+        font-size: 18pt;
+        line-height: 18pt;
+        display: inline-flex;
+    
+        &.super {
+            font-size: 30pt;
+            line-height: 30pt;
+        }
+    }
+
+    .text-scramble {
+        white-space: nowrap;
+    }
+
+    .suffix {
+        margin-left: 2em;
+    }
+
+    @media(max-width: 768px) {
+        .suffix {
+            padding: 3em;
+            text-align: right;
+        }
+
+        .suffix-in {
+            display: none;
+        }
+    }
+
+    @media(min-width: 768px) {
+        .suffix-out {
+            display: none;
+        }
+    }
+}

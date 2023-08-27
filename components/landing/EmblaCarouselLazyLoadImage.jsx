@@ -1,12 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { flushSync } from 'react-dom'
 import Image from 'next/image'
+import "styles/image.scss"
 
 const PLACEHOLDER_SRC = `data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D`
 const TWEEN_FACTOR = 0.5
 
 export const LazyLoadImage = ({emblaApi, ...props}) => {
-    const { imgSrc, inView, index } = props
+    const { imgSrc, inView, index, alt, style } = props
     const [hasLoaded, setHasLoaded] = useState(false)
     const [tweenValues, setTweenValues] = useState([])
 
@@ -70,11 +71,12 @@ export const LazyLoadImage = ({emblaApi, ...props}) => {
                     >
                         <div className="embla__slide__img__container">
                             <Image
-                                className="embla__slide__img embla__lazy-load__img"
+                                className={`embla__slide__img embla__lazy-load__img image-gatsby-vibe${style ? " image-gatsby-vibe-alt" : ''}`}
                                 onLoad={setLoaded}
                                 src={inView ? imgSrc : PLACEHOLDER_SRC}
                                 data-src={imgSrc}
-                                alt="Your alt text"
+                                style={style}
+                                alt={alt}
                                 fill
                             />
                         </div>

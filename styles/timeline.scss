@@ -1,0 +1,17 @@
+ol[data-testid="timeline-component"] {
+    --gold: #ffd4a3;
+
+    padding: 10pt;
+    justify-content: center;
+    border-color: var(--gold);
+
+    div[data-testid="timeline-content"] {
+        margin: 1em auto;
+    }
+
+    div[data-testid="timeline-point"] {
+        .rounded-full {
+            background-color: var(--gold);
+        }
+    }
+}

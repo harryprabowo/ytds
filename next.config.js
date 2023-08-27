@@ -2,7 +2,8 @@
 const nextConfig = {
     images: {
         domains: [
-            'asrieeyxvotzrfsocbmn.supabase.co'
+            'asrieeyxvotzrfsocbmn.supabase.co',
+            'static.vecteezy.com'
         ]
     }
 }

@@ -1,8 +1,9 @@
-import { Inter, Ribeye } from 'next/font/google'
-import "bootstrap/dist/css/bootstrap.min.css"
+import { Great_Vibes, Playfair_Display, Playfair_Display_SC, Cinzel_Decorative } from 'next/font/google'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'styles/globals.css'
+import 'styles/base.scss'
 
-const inter = Inter({ subsets: ['latin'] })
+const font = Playfair_Display({subsets: ['latin']})
 
 export const metadata = {
   title: 'YTDS',
@@ -11,7 +12,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang="en">
-    <body className={inter.className}>
+    <body className={font.className}>
       {children}
     </body>
   </html>

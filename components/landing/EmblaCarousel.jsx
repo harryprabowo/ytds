@@ -63,8 +63,10 @@ const EmblaCarousel = (props) => {
                             emblaApi={emblaApi}
                             key={index}
                             index={index}
-                            imgSrc={images[index]}
+                            imgSrc={images[index].src}
                             inView={slidesInView.indexOf(index) > -1}
+                            alt={images[index].name}
+                            style={images[index].style || null}
                         />
                     ))}
                 </div>

@@ -5,6 +5,12 @@
     padding: 0;
 }
 
+@media(max-width: 768px) {
+    .embla {
+        --slide-height: 60vh;
+    }
+}
+
 .embla__viewport {
     overflow: hidden;
 }
@@ -175,8 +181,8 @@
 }
 
 .embla__lazy-load__spinner {
-    border: 0.4rem solid rgba(0,0,0, 0.2);
-    border-left: 0.4rem solid rgba(0, 0, 0, 0.8);
+    border: 0.4rem solid rgba(255,255,255, 0.2);
+    border-left: 0.4rem solid rgba(255,255,255, 0.8);
     font-size: 1rem;
     display: inline-flex;
     position: absolute;
