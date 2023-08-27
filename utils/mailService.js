@@ -1,29 +1,24 @@
-var nodemailer = require("nodemailer");
-//-----------------------------------------------------------------------------
-export async function sendMail(subject, toEmail, otpText) {
-    var transporter = nodemailer.createTransport({
-        service: "gmail",
+import nodemailer from 'nodemailer';
+
+const sendMail = async (to, subject, html) => {
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.forwardemail.net',
+        port: 465,
+        secure: true,
         auth: {
+            // TODO: replace `user` and `pass` values from:
+            // <https://forwardemail.net/guides/send-email-with-custom-domain-smtp>
             user: process.env.NODEMAILER_EMAIL,
-            pass: process.env.NODEMAILER_PW,
+            pass: process.env.NODEMAILER_PW
         },
-    });
-
-    var mailOptions = {
+    })
+    
+    const { res, err }  = await transporter.sendMail({
         from: process.env.NODEMAILER_EMAIL,
-        to: toEmail,
-        subject: subject,
-        text: otpText,
-    };
+        to,
+        subject,
+        html
+    })
 
-    await new Promise((resolve, reject) => {
-        // send mail
-        transporter.sendMail(mailOptions, (err, response) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(response);
-            }
-        });
-    });
+    return res
 }
