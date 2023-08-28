@@ -44,7 +44,7 @@ const Text = ({venue, date}) => {
             </div>
             <br />
             <div>
-                Underneath the stars and amidst the whispers of time, our souls will unite as one. The date shall mark the beginning of a chapter where two lives blend like colors on an artist's canvas. We would be truly honored by your presence.
+                Underneath the stars and amidst the whispers of time, our souls will unite as one. The date shall mark the beginning of a chapter where two lives blend like colors on an artist&apos;s canvas. We would be truly honored by your presence.
 
                 At the enchanted venues, where every corner echoes with the melodies of a bygone era, we shall dance and celebrate amidst the charm of the 1920s. This era of elegance, of Gatsby dreams and moonlit serenades, will be our backdrop as we take steps towards forever.
             </div>

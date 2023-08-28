@@ -1,4 +1,9 @@
-import client from "utils/client"
+import {
+  getImages,
+  getDiet,
+  getVenues,
+  submitRSVP
+} from "./dbService"
 import HomePage from './home'
 
 class Image {
@@ -17,42 +22,6 @@ export const IMAGES = [
   // "IMG_4493.4", below
 ]
 
-const getImages = async (image_filename) => {
-  const { data: { publicUrl }, error } = await client
-    .storage
-    .from('media')
-    .getPublicUrl(`wedding/${image_filename}`)
-  
-  return publicUrl
-}
-
-const getVenues = async () => {
-  const { data: venues, error } = await client
-    .from('venue')
-    .select()
-  
-  return venues
-}
-
-const getDiet = async () => {
-  const { data: diets, error } = await client
-    .from('diet')
-    .select()
-  
-  return diets
-}
-
-const submitRSVP = async () => {
-  const { data, error } = await client
-    .from('rsvp')
-    .insert([
-      { some_column: 'someValue', other_column: 'otherValue' },
-    ])
-    .select()
-
-  return data
-}
-
 export default async function Page() {
   // Fetch data directly in a Server Component
   const venues = await getVenues()
@@ -68,6 +37,6 @@ export default async function Page() {
 
   // Forward fetched data to your Client Component
   return (
-    <HomePage venues={venues} images={images} diets={diets} />
+    <HomePage venues={venues} images={images} diets={diets} submitRSVP={submitRSVP} />
   )
 }

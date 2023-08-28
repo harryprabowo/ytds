@@ -1,7 +1,7 @@
 'use client'
 
 import ReactFullpage from "@fullpage/react-fullpage"
-import { Landing, Message, Venue, RSVP, Footer } from "components"
+import { Landing, Message, RSVP, Footer } from "components"
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 const pluginWrapper = () => {
     /*
@@ -9,20 +9,13 @@ const pluginWrapper = () => {
     */
 }
 
-export default function HomePage({ venues, images, diets }) {
-    const ele = [
-        Landing,
-        Venue,
-        RSVP
-    ]
-
+export default function HomePage({ venues, images, diets, submitRSVP }) {
     return (
         <div>
             <ReactFullpage
                 navigation
                 pluginWrapper={pluginWrapper}
-                render={comp =>
-                    console.log("render prop change") || (
+                render={comp => (
                         <ReactFullpage.Wrapper>
                             <div key="1" id="Landing" className="section">
                                 <Landing images={images} />
@@ -31,7 +24,7 @@ export default function HomePage({ venues, images, diets }) {
                                 <Message venues={venues} />
                             </div>
                             <div key="3" id="RSVP" className="section dark-section">
-                                <RSVP venues={venues} diets={diets}  />
+                                <RSVP venues={venues} diets={diets} submitRSVP={submitRSVP}  />
                             </div>
                             <div key="4" id="Footer" className="section" style={{height: '30vh'}}>
                                 <Footer />

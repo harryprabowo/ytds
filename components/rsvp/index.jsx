@@ -56,11 +56,21 @@ const colourStyles = {
 };
 
 
-const RSVPForm = ({ venues, diets }) => {
+const RSVPForm = ({ venues, diets, submitRSVP }) => {
     // const [dietsSelected, setDietsSelected] = useState([])
     const { register, handleSubmit, formState: { errors }, control } = useForm();
-    const onSubmit = data => {
-        console.log(data)
+    const onSubmit = async(data) => {
+        const { partySize, diet, fullName, venue, ...rest } = data
+        const payload = {
+            ...rest,
+            party_size: parseInt(partySize),
+            diet: diet.value,
+            name: fullName,
+            venues: venue.map(e => e.value)
+        }
+
+        const res = await submitRSVP(payload)
+        console.log(res)
     }
     
     const venueOptions = venues.map(({ id, label }) => ({
@@ -188,7 +198,7 @@ const RSVPForm = ({ venues, diets }) => {
 const RSVP = (props) => {
     return (
         <div className="rsvp-container">
-            <h1 className={greatVibes.className}>꧁Répondez s'il vous plaît꧂</h1>
+            <h1 className={greatVibes.className}>꧁Répondez s&apos;il vous plaît꧂</h1>
             <br/>
             <Row style={{margin: 0}}>
                 <Col />

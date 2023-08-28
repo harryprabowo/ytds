@@ -39,5 +39,8 @@
     "react-supabase": "^0.2.0",
     "sass": "^1.66.1",
     "tailwindcss": "^3.3.3"
+  },
+  "devDependencies": {
+    "encoding": "^0.1.13"
   }
 }

@@ -7,10 +7,12 @@ import {Button, ButtonGroup} from "react-bootstrap"
 import "styles/timeline.scss"
 
 export default function StepperTimeline({ data, horizontal = false }) {
+    const dataSorted = data.sort((a, b) => a.time - b.time)
+        
     return (
         <Timeline horizontal={horizontal}>
             {
-                data.map(({id, label, name, desc, location, time}) => (
+                dataSorted.map(({id, label, name, desc, location, time}) => (
                     <Timeline.Item key={id}>
                         <Timeline.Point />
                         <Timeline.Content>

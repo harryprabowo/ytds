@@ -30,7 +30,7 @@ const theText = [
 ]
 
 const Text = () => (
-    <div class="landing-text">
+    <div className="landing-text">
         <Image alt="divider" src="https://static.vecteezy.com/system/resources/previews/012/634/581/non_2x/art-deco-outline-stroke-in-golden-color-for-classy-and-luxury-style-premium-vintage-line-art-design-element-free-png.png" height={0} width={300} />
         <h1 className={playfair.className} style={{ fontSize: '12pt' }}>
             <Typewriter
