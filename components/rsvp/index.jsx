@@ -184,7 +184,7 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
             <br />
             <Row>
                 <Col style={{textAlign:'center'}}>
-                    <Button type="submit" variant="warning" size="lg" block>SUBMIT</Button>
+                    <Button type="submit" variant="warning" size="lg" block="true">SUBMIT</Button>
                 </Col>
             </Row>
         </Form>

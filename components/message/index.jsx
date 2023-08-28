@@ -3,7 +3,7 @@ import { Row, Col, Container } from "react-bootstrap"
 import "styles/message.scss"
 import Venue from "./venue"
 
-const Text = ({venue, date}) => {
+const TextEN = () => {
     const texts = [
         "friends",
         "family",
@@ -39,7 +39,7 @@ const Text = ({venue, date}) => {
             </div>
             <br />
             <div>
-                As the joyful bells of happiness ring, we are thrilled to invite you to share in a momentous occasion in our lives – our wedding day. It is with great delight that we extend this invitation to witness and celebrate our love story with us.
+                As the joyful bells of happiness ring, we are thrilled to invite you to share in a momentous occasion in our lives – our wedding day. It is with great delight that we extend this invitation to witness and celebrate our love story with you.
             </div>
             <br />
             <div>
@@ -48,6 +48,44 @@ const Text = ({venue, date}) => {
             <br />
             <div>
                 We warmly invite you to join us on this special day, as we exchange vows and mark the beginning of a new phase. Your presence and blessings will make our joy complete and memorable.
+            </div>
+        </blockquote>
+    )
+}
+
+const TextCN = () => {
+    const texts = [
+        "朋友",
+        "家人",
+        "同事",
+    ]
+
+    return (
+        <blockquote className="ch" >
+            <div>
+                <span className="bolding super">
+                    亲爱的
+                    <TextScramble
+                        autoStart
+                        className="text-scramble"
+                        texts={texts}
+                        letterSpeed={100}
+                        nextLetterSpeed={100}
+                        steps={[
+                            {
+                                roll: 20,
+                                action: '+',
+                                type: 'all',
+                            },
+                            {
+                                action: '-',
+                                type: 'forward',
+                            },
+                        ]}
+                        pauseTime={1000}
+                    />
+                    ,
+                </span>
             </div>
             <br />
             <div>
@@ -65,7 +103,60 @@ const Text = ({venue, date}) => {
             <div>
                 期待您的光临，与我们共创美好回忆。
             </div>
+        </blockquote>
+    )
+}
+
+
+const TextID = () => {
+    const texts = [
+        "sahabat",
+        "keluarga",
+        "rekan-rekan",
+    ]
+
+    return (
+        <blockquote>
+            <div>
+                <span className="bolding super">
+                    Yang terkasih&nbsp;
+                </span>  
+                <br/>
+                <span className="bolding super">
+                    <TextScramble
+                        autoStart
+                        className="text-scramble"
+                        texts={texts}
+                        letterSpeed={100}
+                        nextLetterSpeed={100}
+                        steps={[
+                            {
+                                roll: 20,
+                                action: '+',
+                                type: 'all',
+                            },
+                            {
+                                action: '-',
+                                type: 'forward',
+                            },
+                        ]}
+                        pauseTime={1000}
+                    />
+                    ,
+                </span>
+            </div>
             <br />
+            <div>
+                Dengan hangat dalam hati, kami ingin berbagi momen istimewa dalam hidup kami – pernikahan kami, dan mengundang Anda untuk menjadi bagian dari cerita ini. Dari kilasan pertama yang menggetarkan, perjalanan cinta kami tumbuh menjadi ikatan yang kuat, diberkahi dengan kenangan tak ternilai. Kini, kami dengan keyakinan dan cinta yang mendalam, memasuki babak baru ini.
+            </div>
+            <br />
+            <div>
+                Kehadiran Anda adalah cahaya di setiap langkah kami. Doa dan dukungan Anda akan menjadi hiasan berharga dalam galeri kenangan kami. Semoga Anda dapat bergabung dengan kami untuk merayakan kebahagiaan ini. 
+            </div>
+            <br />
+            <div>
+                Terima kasih, sahabat, atas doa dan kebersamaan yang telah mengukir cerita indah ini.
+            </div>
         </blockquote>
     )
 }
@@ -74,35 +165,55 @@ const Message = ({venues}) => {
     return (
         <Container fluid className="message">
             <Row>
-                <Col md={8} xs={12}>
-                    <Text date={"date"} venue={"venue"} />
+                <Col lg={4}  xs={12}>
+                    <TextEN date={"date"} venue={"venue"} />
+                    <br />
 
                     <div className="suffix suffix-in">
                         <div>
                             With love and anticipation,
                         </div>
-                        <div>
-                            充满爱意和期待，
-                        </div>
                         <br />
                         <div>
                             You Tien Hoe & Desy Indahsari
                         </div>
-                        <br/>
+                    </div>
+                </Col>
+                <Col lg={4} xs={12}>
+                    <TextCN date={"date"} venue={"venue"} />
+                    <br />
+
+                    <div className="suffix suffix-in ch">
+                        <div>
+                            充满爱意和期待，
+                        </div>
                         <div>
                             何猷钿 & 黄詩佳
                         </div>
                     </div>
                 </Col>
                 <Col>
-                    <Venue venues={venues} />
+                    <TextID date={"date"} venue={"venue"} />
+                    <br />
+
+                    <div className="suffix suffix-in">
+                        <div>
+                            Dengan penuh apresiasi,
+                        </div>
+                        <br />
+                        <div>
+                            You Tien Hoe & Desy Indahsari
+                        </div>
+                    </div>
                 </Col>
-                <Col md={1} xs={0}/>
             </Row>
             <Row>
                 <Col className="suffix suffix-out">
                     <div>
                         With love and anticipation,
+                    </div>
+                    <div>
+                        Dengan penuh apresiasi,
                     </div>
                     <div>
                         充满爱意和期待，
@@ -111,7 +222,6 @@ const Message = ({venues}) => {
                     <div>
                         You Tien Hoe & Desy Indahsari
                     </div>
-                    <br />
                     <div>
                         何猷钿 & 黄詩佳
                     </div>

@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 import ReactFullpage from "@fullpage/react-fullpage"
-import { Landing, Message, RSVP, Footer } from "components"
+import { Landing, Message, RSVP, Footer, Venue } from "components"
 // NOTE: if using fullpage extensions/plugins put them here and pass it as props.
 const pluginWrapper = () => {
     /*
@@ -28,10 +28,13 @@ const HomePage = ({ venues, images, diets, submitRSVP }) => {
                             <div key="2" id="Message" className="section">
                                 <Message venues={venues} />
                             </div>
-                            <div key="3" id="RSVP" className="section dark-section">
+                            <div key="3" id="Venue" className="section">
+                                <Venue venues={venues} />
+                            </div>
+                            <div key="4" id="RSVP" className="section dark-section">
                                 <RSVP venues={venues} diets={diets} submitRSVP={submitRSVP} show={show} setShow={setShow}  />
                             </div>
-                            <div key="4" id="Footer" className="section" style={{height: '30vh'}}>
+                            <div key="5" id="Footer" className="section" style={{height: '30vh'}}>
                                 <Footer />
                             </div>
                         </ReactFullpage.Wrapper>
