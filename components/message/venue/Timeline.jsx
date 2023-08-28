@@ -24,13 +24,11 @@ export default function StepperTimeline({ data }) {
     useEffect(() => {
         window.addEventListener("resize", handleResize)
     })
-
-    const dataSorted = data.sort((a, b) => a.time - b.time)
         
     return (
         <Timeline horizontal={!isMobile}>
             {
-                dataSorted.map(({id, label, name, desc, location, time}) => (
+                data.map(({ id, label, name, desc, location, time, dress_code }) => (
                     <Timeline.Item key={id}>
                         <Timeline.Point />
                         <Timeline.Content>
@@ -51,6 +49,7 @@ export default function StepperTimeline({ data }) {
                             <Timeline.Body>
                                 {desc}
                                 <br />
+                                <code>Dress code: {dress_code}</code>
                             </Timeline.Body>
                         </Timeline.Content>
                     </Timeline.Item>
