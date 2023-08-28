@@ -88,6 +88,10 @@ const Message = ({venues}) => {
                         <div>
                             You Tien Hoe & Desy Indahsari
                         </div>
+                        <br/>
+                        <div>
+                            何猷钿 & 黄詩佳
+                        </div>
                     </div>
                 </Col>
                 <Col>
@@ -100,9 +104,16 @@ const Message = ({venues}) => {
                     <div>
                         With love and anticipation,
                     </div>
+                    <div>
+                        充满爱意和期待，
+                    </div>
                     <br />
                     <div>
                         You Tien Hoe & Desy Indahsari
+                    </div>
+                    <br />
+                    <div>
+                        何猷钿 & 黄詩佳
                     </div>
                 </Col>
             </Row>
