@@ -2,7 +2,6 @@ ol[data-testid="timeline-component"] {
     --gold: #ffd4a3;
 
     padding: 10pt;
-    justify-content: center;
     border-color: var(--gold);
 
     div[data-testid="timeline-content"] {
@@ -14,10 +13,28 @@ ol[data-testid="timeline-component"] {
             background-color: var(--gold);
         }
     }
+
+    li {
+        width: 100%;
+    }
 }
 
 .timeline-container {
     padding-left: 2em;
+    width: 80vw;
+
+    h1 {
+        font-size: 30pt;
+    }
+
+    .map-buttons {
+        margin: 0 1em;
+
+        @media(max-width: 1400px) {
+            margin: 0;
+            display: block;
+        }
+    }
 
     @media(max-width: 768px) {
         padding-right: 2em;

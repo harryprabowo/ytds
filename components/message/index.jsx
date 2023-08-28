@@ -180,19 +180,6 @@ const Message = ({venues}) => {
                     </div>
                 </Col>
                 <Col lg={4} xs={12}>
-                    <TextCN date={"date"} venue={"venue"} />
-                    <br />
-
-                    <div className="suffix suffix-in ch">
-                        <div>
-                            充满爱意和期待，
-                        </div>
-                        <div>
-                            何猷钿 & 黄詩佳
-                        </div>
-                    </div>
-                </Col>
-                <Col>
                     <TextID date={"date"} venue={"venue"} />
                     <br />
 
@@ -203,6 +190,19 @@ const Message = ({venues}) => {
                         <br />
                         <div>
                             You Tien Hoe & Desy Indahsari
+                        </div>
+                    </div>
+                </Col>
+                <Col>
+                    <TextCN date={"date"} venue={"venue"} />
+                    <br />
+
+                    <div className="suffix suffix-in ch">
+                        <div>
+                            充满爱意和期待，
+                        </div>
+                        <div>
+                            何猷钿 & 黄詩佳
                         </div>
                     </div>
                 </Col>

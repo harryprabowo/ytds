@@ -58,8 +58,12 @@
     }
 
     @media(max-width: 768px) {
+        blockquote {
+            margin-right: 0;
+        }
+
         .suffix {
-            padding: 3em;
+            padding: 2em;
             text-align: right;
         }
 
