@@ -19,7 +19,7 @@ const TextEN = () => {
                         autoStart
                         className="text-scramble"
                         texts={texts}
-                        letterSpeed={100}
+                        letterSpeed={50}
                         nextLetterSpeed={100}
                         steps={[
                             {
@@ -32,7 +32,7 @@ const TextEN = () => {
                                 type: 'forward',
                             },
                         ]}
-                        pauseTime={1000}
+                        pauseTime={2000}
                     />
                     ,
                 </span>
