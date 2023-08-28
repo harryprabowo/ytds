@@ -79,10 +79,6 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
     }))
 
     const dietOptions = [
-        {
-            value: 0,
-            label: 'None'
-        },
         ...diets.map(({ id, name, desc }) => ({
         value: id,
         label: name,

@@ -39,24 +39,32 @@ const Text = ({venue, date}) => {
             </div>
             <br />
             <div>
-                In the tapestry of life, there are moments that shimmer with an ethereal brilliance, and amidst this grand tapestry, our wedding day emerges as a jewel of unparalleled significance. We invite you to join us in weaving this exquisite thread into the fabric of our journey.
-
+                As the joyful bells of happiness ring, we are thrilled to invite you to share in a momentous occasion in our lives – our wedding day. It is with great delight that we extend this invitation to witness and celebrate our love story with us.
             </div>
             <br />
             <div>
-                Underneath the stars and amidst the whispers of time, our souls will unite as one. The date shall mark the beginning of a chapter where two lives blend like colors on an artist&apos;s canvas. We would be truly honored by your presence.
-
-                At the enchanted venues, where every corner echoes with the melodies of a bygone era, we shall dance and celebrate amidst the charm of the 1920s. This era of elegance, of Gatsby dreams and moonlit serenades, will be our backdrop as we take steps towards forever.
-            </div>
-            <br/>
-            <div>
-                Your response, a stroke of the pen, holds the power to shape our gathering. Kindly grace us with your intention to attend by [RSVP Deadline]. Every word, every gesture, will be etched into the memory of this day.
-
-                Visit our digital scroll, our RSVP website, and let us know if the stars align for you to join. If fate has other plans, your blessings will reach us just the same.
-
-                As we embark on this poetic journey, we eagerly await the verses of your response.
+                Our journey of love started with a single glance, and over time, our bond has grown stronger with shared moments and cherished memories. Now, with hearts full of love and commitment, we are embarking on this beautiful journey of marriage, creating a new chapter in our lives.
             </div>
             <br />
+            <div>
+                We warmly invite you to join us on this special day, as we exchange vows and mark the beginning of a new phase. Your presence and blessings will make our joy complete and memorable.
+            </div>
+            <br />
+            <div>
+                在欢乐的钟声中，我们非常激动地邀请您与我们共同分享生命中一个重要的时刻——我们的婚礼日。我们怀着无比的喜悦，诚挚地邀请您与我们一同见证并庆祝我们的爱情故事。
+            </div>
+            <br />
+            <div>
+                我们的爱情之旅始于一个眼神的交汇，随着时间的推移，我们的情感更加深厚，共同的时刻和珍贵的回忆使我们的羁绊更加坚固。如今，怀揣着满满的爱与承诺，我们迈向美好的婚姻之路，书写生命中新的篇章。
+            </div>
+            <br />
+            <div>
+                我们诚挚地邀请您在这特殊的日子里与我们共同度过，与我们一同交换誓言，标志着新阶段的开始。您的出席和祝福将使我们的喜悦更加圆满和难忘。
+            </div>
+            <br />
+            <div>
+                期待您的光临，与我们共创美好回忆。
+            </div>
             <br />
         </blockquote>
     )
@@ -72,6 +80,9 @@ const Message = ({venues}) => {
                     <div className="suffix suffix-in">
                         <div>
                             With love and anticipation,
+                        </div>
+                        <div>
+                            充满爱意和期待，
                         </div>
                         <br />
                         <div>
