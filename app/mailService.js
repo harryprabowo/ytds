@@ -1,24 +1,28 @@
 import nodemailer from 'nodemailer';
 
-const sendMail = async (to, subject, html) => {
+export const sendMail = async (to, subject, html) => {
     const transporter = nodemailer.createTransport({
-        host: 'smtp.forwardemail.net',
-        port: 465,
-        secure: true,
+        service: 'gmail',
         auth: {
-            // TODO: replace `user` and `pass` values from:
-            // <https://forwardemail.net/guides/send-email-with-custom-domain-smtp>
             user: process.env.NODEMAILER_EMAIL,
             pass: process.env.NODEMAILER_PW
         },
     })
-    
-    const { res, err }  = await transporter.sendMail({
+
+    const mailOptions = {
         from: process.env.NODEMAILER_EMAIL,
         to,
         subject,
         html
-    })
+    }
+    
+    const { res, err } = await transporter.sendMail(mailOptions)
+
+    if (err) {
+        throw new Error(err.message)
+    }
 
     return res
 }
+
+export default sendMail

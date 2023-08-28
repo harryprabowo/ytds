@@ -62,6 +62,7 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
     // const [dietsSelected, setDietsSelected] = useState([])
     const [nav, setNav] = useState(venues.map(e => false))
     const [whichActive, setWhichActive] = useState()
+    const [loading, setLoading] = useState(false)
     const [venueSelected, setVenueSelected] = useState([])
     const { register, handleSubmit, formState: { errors }, control, setError, clearErrors } = useForm();
     const onSubmit = async ({
@@ -70,6 +71,7 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
         contact,
         ...data
     }) => {
+        setLoading(true)
         const payload = {
             name,
             email,
@@ -79,8 +81,8 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
         }
 
         const res = await submitRSVP(payload)
-        console.log(res)
-        // setShow(true)
+        setShow(true)
+        setLoading(false)
     }
 
     const venueOptions = venues.map(({ id, label }) => ({
@@ -299,7 +301,9 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
             <br />
             <Row>
                 <Col style={{ textAlign: 'center' }}>
-                    <Button type="submit" variant="warning" size="lg" block="true" disabled={Object.keys(errors).length !== 0}>SUBMIT</Button>
+                    <Button type="submit" variant="warning" size="lg" block="true" disabled={!loading && Object.keys(errors).length !== 0}>
+                        {loading ? 'Submitting...' : 'SUBMIT'}
+                    </Button>
                 </Col>
             </Row>
         </Form>

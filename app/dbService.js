@@ -1,5 +1,6 @@
 "use server"
 import client from "utils/client"
+import sendMail from "app/mailService"
 
 const _get = async (table) => {
     const { data, error } = await client
@@ -7,7 +8,7 @@ const _get = async (table) => {
         .select()
     
     if (error) {
-        throw new Error(error.message)
+        throw new Error(error.message, { cause: error.source })
     }
     
     return data
@@ -33,7 +34,7 @@ const getImages = async (image_filename) => {
         .getPublicUrl(`wedding/${image_filename}`)
 
     if (error) {
-        throw new Error(error.message)
+        throw new Error(error.message, { cause: error.source })
     }
 
     return publicUrl
@@ -80,11 +81,21 @@ const submitRSVP = async ({
         }))
     )
 
-    return {
+    const rsvpDetail = {
         rsvp: rsvp[0],
         party: party
     }
 
+    await sendRSVPMail(rsvpDetail)
+    return rsvpDetail
+}
+
+const sendRSVPMail = async (rsvpDetail) => {
+    await sendMail(
+        rsvpDetail.rsvp.email,
+        "TEST",
+        "THIS IS A TEST FOR MY MEDIUM USERS"
+    )
 }
 
 export {
