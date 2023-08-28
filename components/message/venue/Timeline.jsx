@@ -3,7 +3,7 @@
 import { Timeline } from 'flowbite-react';
 import { TbMapPinSearch, TbBrandWaze } from "react-icons/tb";
 import { CustomFlowbiteTheme } from 'flowbite-react';
-import {Button} from "react-bootstrap"
+import {Button, ButtonGroup} from "react-bootstrap"
 import "styles/timeline.scss"
 
 export default function StepperTimeline({ data, horizontal = false }) {
@@ -22,12 +22,15 @@ export default function StepperTimeline({ data, horizontal = false }) {
                             </Timeline.Time>
                             <Timeline.Body>
                                 {desc}
-                                <Button variant="link" size="sm" href={location.gmaps.link} target="_blank" rel="noopener noreferrer">
-                                    <TbMapPinSearch/>
-                                </Button>
-                                <Button variant="link" size="sm" href={location.waze.link} target="_blank" rel="noopener noreferrer">
-                                    <TbBrandWaze />
-                                </Button>
+                                <br />
+                                <ButtonGroup>
+                                    <Button variant="outline-primary" size="sm" href={location.gmaps.link} target="_blank" rel="noopener noreferrer">
+                                        <TbMapPinSearch/>
+                                    </Button>
+                                    <Button variant="outline-primary" size="sm" href={location.waze.link} target="_blank" rel="noopener noreferrer">
+                                        <TbBrandWaze />
+                                    </Button>
+                                </ButtonGroup>
                             </Timeline.Body>
                         </Timeline.Content>
                     </Timeline.Item>
