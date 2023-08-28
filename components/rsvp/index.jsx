@@ -68,11 +68,17 @@ const RSVPForm = ({ venues, diets }) => {
         label
     }))
 
-    const dietOptions = diets.map(({ id, name, desc }) => ({
+    const dietOptions = [
+        {
+            value: 0,
+            label: 'None'
+        },
+        ...diets.map(({ id, name, desc }) => ({
         value: id,
         label: name,
 
-    }))
+        })),
+    ]
 
     const dietDetails = (_dietsSelected) => {
         return (
@@ -113,7 +119,7 @@ const RSVPForm = ({ venues, diets }) => {
                 <Col md={4} xs={12}>
                     <Form.Group controlId="partySize">
                         <Form.Label>Party size</Form.Label>
-                        <Form.Control className="css-13cymwt-control" type="number" name="Party" defaultValue={1} min={1} max={20} {...register("partySize", { required: 'We would love to know your party size', min: 1, max: 20 })} />
+                        <Form.Control className="css-13cymwt-control" type="number" name="Party" defaultValue={1} min={1} max={10} {...register("partySize", { required: 'We would love to know your party size', min: 1, max: 10 })} />
                         <Form.Text muted>
                             <ErrorMessage errors={errors} name="partySize" />
                         </Form.Text>
@@ -146,14 +152,11 @@ const RSVPForm = ({ venues, diets }) => {
                         <Controller
                             name="diet"
                             control={control}
+                            rules={{ required: "We'd love to cater to your tastes" }}
                             render={({ field }) => (
                                 <Select
                                     {...field}
-                                    isClearable
-                                    isMulti
-                                    closeMenuOnSelect={false}
                                     classNamePrefix="addl-class"
-                                    components={makeAnimated()}
                                     options={dietOptions}
                                     styles={colourStyles}
                                     // onChange={e => {
@@ -170,6 +173,8 @@ const RSVPForm = ({ venues, diets }) => {
                     <br />
                 </Col>
             </Row>
+            <br />
+            <br />
             <Row>
                 <Col style={{textAlign:'center'}}>
                     <Button type="submit" variant="warning" size="lg" block>SUBMIT</Button>

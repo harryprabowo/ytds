@@ -21,6 +21,10 @@
             border-right: 0;
         }
 
+        .addl-class__single-value {
+            color: white;
+        }
+
         button:hover {
             background-color: #ffd4a3;
         }
@@ -51,6 +55,16 @@
 
     .addl-class__menu {
         background-color: #222;
+    }
+
+    button {
+        width: 50%;
+    }
+
+    @media(max-width:768px) {
+        button {
+            width: 100%;
+        }
     }
 }
 
