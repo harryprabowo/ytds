@@ -44,7 +44,54 @@ const Text = () => (
             />
         </h1>
         <br/>
-        <h1 className={cinzel.className} style={{ fontSize: '24pt' }}>You Tien Hoe<br className="brbr" /> & <br className="" />Desy Indahsari</h1>
+        <h1 className={cinzel.className} style={{ fontSize: '24pt' }}>
+            
+            <TextScramble
+                autoStart
+                className="text-scramble"
+                texts={[
+                    "You Tien Hoe",
+                    "何猷钿"
+                ]}
+                letterSpeed={50}
+                nextLetterSpeed={50}
+                steps={[
+                    {
+                        roll: 20,
+                        action: '+',
+                        type: 'all',
+                    },
+                    {
+                        action: '-',
+                        type: 'forward',
+                    },
+                ]}
+                pauseTime={3000}
+            />
+            &
+            <TextScramble
+                autoStart
+                className="text-scramble"
+                texts={[
+                    "Desy Indahsari",
+                    "黄詩佳"
+                ]}
+                letterSpeed={50}
+                nextLetterSpeed={50}
+                steps={[
+                    {
+                        roll: 20,
+                        action: '+',
+                        type: 'all',
+                    },
+                    {
+                        action: '-',
+                        type: 'forward',
+                    },
+                ]}
+                pauseTime={3000}
+            />
+        </h1>
         <br/>
         <h2 className={bodoni.className} style={{ fontSize: '20pt' }}>꧁The Wedding꧂</h2>
         <Image alt="divider" src="https://static.vecteezy.com/system/resources/previews/012/634/581/non_2x/art-deco-outline-stroke-in-golden-color-for-classy-and-luxury-style-premium-vintage-line-art-design-element-free-png.png" height={0} width={300} />
