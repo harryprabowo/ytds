@@ -11,6 +11,7 @@ const Footer = () => {
         <div className="footer-container">
             <h2>@2023</h2>
             <h1 className={greatVibes.className}>Thank you</h1>
+            <code style={{color:'black'}}>Follow & tag us #YTDesyWeddingSBK2023</code>
             <br />
             <br />
             <Button variant="link" size="xl" href="https://www.youtube.com/@desyindahsari" target="_blank">

@@ -18,7 +18,7 @@ export const IMAGES = [
   new Image("1.jpeg", true),
   new Image("2.jpeg"),
   new Image("3.jpeg"),
-  new Image("4.jpeg"),
+  new Image("4.jpeg", true),
   // "IMG_4493.4", below
 ]
 

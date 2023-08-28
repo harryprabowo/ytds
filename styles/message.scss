@@ -1,7 +1,11 @@
 .message {
+    padding: 3em;
+    padding-right: 4em;
+
     blockquote {
         quotes: "\201C" "\201D" "\2018" "\2019";
-        padding-left: 2em;
+        // padding-left: 2em;
+        line-height: 18pt;
 
         @media(max-width: 768px) {
             margin-right: 5em;
@@ -35,13 +39,13 @@
     }
 
     .bolding {
-        font-size: 18pt;
+        font-size: 16pt;
         line-height: 18pt;
         display: inline-flex;
     
         &.super {
-            font-size: 30pt;
-            line-height: 30pt;
+            font-size: 24pt;
+            line-height: 24pt;
         }
     }
 
@@ -50,13 +54,16 @@
     }
 
     .suffix {
-        margin-left: 2em;
         font-weight: 600;
     }
 
     @media(max-width: 768px) {
+        blockquote {
+            margin-right: 0;
+        }
+
         .suffix {
-            padding: 3em;
+            padding: 2em;
             text-align: right;
         }
 

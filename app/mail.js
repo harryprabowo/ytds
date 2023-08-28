@@ -1,4 +1,5 @@
-import { sendMail } from "utils/mailService";
+import { sendMail } from "app/mailService"
+
 const handler = async (req, res) => {
     try {
         const { method } = req;
@@ -7,7 +8,7 @@ const handler = async (req, res) => {
                 //Do some thing
                 await sendMail(
                     "TEST",
-                    "dontkillme@bunnyfiedlabs.com",
+                    "harryprabowo10@gmail.com",
                     "THI IS A TEST FOR MY MEDIUM USERS"
                 );
                 res.status(200).send("Success");
