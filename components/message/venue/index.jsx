@@ -6,7 +6,6 @@ const cinzel = Cinzel_Decorative({ subsets: ['latin'], weight: ['700'] })
 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 const Venue = ({ venues, horizontal }) => {
-    console.log(venues)
     const dataSorted = venues.sort((a, b) => a.id - b.id)
 
     const info = dataSorted.map(({ location, time, timezone, dress_code,...rest }) => ({

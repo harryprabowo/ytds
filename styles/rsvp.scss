@@ -66,5 +66,59 @@
             width: 100%;
         }
     }
+
+    .card-header {
+        border-bottom: 1px solid #ffd4a3;
+    }
+
+    .inline-venue {
+        display: flex;
+        align-items: center;
+        margin: 5pt 0;
+
+        input {
+            border: 1px solid #ffd4a3;
+        }
+        label {
+            color:#ffd4a3 !important;
+        }
+
+        input:not(:checked) {
+            background-color: #333;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px;
+            margin: auto 5pt;
+            
+            .to-the-right {
+                display: none;
+                font-size: x-small;
+            }
+        }
+
+        a.active {
+            background-color: #ffd4a3;
+            * {
+                color: #333
+            }
+            
+            .to-the-right {
+                display: block;
+            }
+        }
+
+        a.disabled {
+            text-decoration: line-through;
+            background: transparent;
+
+            * {
+                color: rgb(255,255,255,0.3)
+            }
+            // color: #ffd4a3;
+        }
+    }
 }
 
