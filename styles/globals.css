@@ -9,3 +9,8 @@
 #fp-nav span {
   background-color: #aaa !important
 }
+
+@font-face {
+  font-family: 'Marshmallow';
+  src: url('./HanyiSentyMarshmallow.ttf')
+}

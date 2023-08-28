@@ -1,10 +1,9 @@
-import { Great_Vibes, Playfair_Display, Playfair_Display_SC, Cinzel_Decorative } from 'next/font/google'
+import { Cinzel_Decorative } from 'next/font/google'
 import { useForm, Controller } from "react-hook-form"
 import { ErrorMessage } from "@hookform/error-message"
-import { Form, FloatingLabel, Row, Col, Button } from 'react-bootstrap'
-import Select, { StylesConfig } from 'react-select'
-import makeAnimated from 'react-select/animated';
-import { useEffect, useState } from "react";
+import { Form,  Row, Col, Button } from 'react-bootstrap'
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated'
 import "styles/rsvp.scss"
 
 const greatVibes = Cinzel_Decorative({ subsets: ['latin'], weight: ['700'] })
@@ -56,10 +55,11 @@ const colourStyles = {
 };
 
 
-const RSVPForm = ({ venues, diets, submitRSVP }) => {
+
+const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
     // const [dietsSelected, setDietsSelected] = useState([])
     const { register, handleSubmit, formState: { errors }, control } = useForm();
-    const onSubmit = async(data) => {
+    const onSubmit = async (data) => {
         const { partySize, diet, fullName, venue, ...rest } = data
         const payload = {
             ...rest,
@@ -71,6 +71,7 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
 
         const res = await submitRSVP(payload)
         console.log(res)
+        setShow(true)
     }
     
     const venueOptions = venues.map(({ id, label }) => ({
@@ -79,10 +80,6 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
     }))
 
     const dietOptions = [
-        {
-            value: 0,
-            label: 'None'
-        },
         ...diets.map(({ id, name, desc }) => ({
         value: id,
         label: name,
@@ -190,12 +187,12 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                     <Button type="submit" variant="warning" size="lg" block>SUBMIT</Button>
                 </Col>
             </Row>
-
         </Form>
     );
 }
 
-const RSVP = (props) => {
+const RSVP = ({show, setShow, ...props}) => {
+
     return (
         <div className="rsvp-container">
             <h1 className={greatVibes.className}>꧁Répondez s&apos;il vous plaît꧂</h1>
@@ -204,7 +201,7 @@ const RSVP = (props) => {
                 <Col />
                 <Col md={9} xs={12}>
                     <div className="rsvp-form-container" >
-                        <RSVPForm {...props} />
+                        <RSVPForm {...props} show={show} setShow={setShow} />
                     </div>
                 </Col>
                 <Col />
