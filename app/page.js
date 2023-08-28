@@ -10,11 +10,11 @@ class Image {
 
 export const IMAGES = [
   // "IMG_0148.JPG", out of place
-  new Image("IMG_4488.JPG", true),
-  new Image("IMG_4486.JPG"),
-  new Image("IMG_4490.JPG"),
-  new Image("IMG_4487.JPG"),
-  // "IMG_4493.JPG", below
+  new Image("1.jpeg", true),
+  new Image("2.jpeg"),
+  new Image("3.jpeg"),
+  new Image("IMG_4487.jpeg"),
+  // "IMG_4493.4", below
 ]
 
 const getImages = async (image_filename) => {
