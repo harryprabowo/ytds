@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
+import fs from "fs"
 
-export const sendMail = async (to, subject, html) => {
+export const sendMail = async (to, subject, data) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -8,6 +9,11 @@ export const sendMail = async (to, subject, html) => {
             pass: process.env.NODEMAILER_PW
         },
     })
+
+    // Read the email template
+    const templateSource = fs.readFileSync('utils/email-template.hbs', 'utf8');
+    const template = handlebars.compile(templateSource);
+    const html = template(data);
 
     const mailOptions = {
         from: process.env.NODEMAILER_EMAIL,
