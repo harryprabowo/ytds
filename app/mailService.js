@@ -3,18 +3,19 @@ import handlebars from 'handlebars'
 import fs from "fs"
 import https from "https"
 
-const downloadFile = (url, pathToFile) => {
-    const file = fs.createWriteStream(pathToFile);
-
+function downloadFile(url) {
     return new Promise((resolve, reject) => {
         https.get(url, (response) => {
-            response.pipe(file);
+            let data = '';
 
-            file.on('finish', () => {
-                file.close(resolve);
+            response.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            response.on('end', () => {
+                resolve(data);
             });
         }).on('error', (error) => {
-            fs.unlink(pathToFile);
             reject(error.message);
         });
     });
@@ -56,8 +57,7 @@ export const sendMail = async (
 
 
     // Read the email template
-    await downloadFile(process.env.TEMPLATE_URL, "email-template.hbs")
-    const templateSource = fs.readFileSync('email-template.hbs', 'utf8');
+    const templateSource = await downloadFile(process.env.TEMPLATE_URL);
     const template = handlebars.compile(templateSource);
     const html = template(data);
 
