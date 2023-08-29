@@ -199,7 +199,7 @@ const Message = ({venues}) => {
 
                     <div className="suffix suffix-in ch">
                         <div>
-                            充满爱意和期待，
+                            诚挚祝福与期待,
                         </div>
                         <div>
                             何猷钿 & 黄詩佳
