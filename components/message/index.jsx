@@ -215,14 +215,14 @@ const Message = ({venues}) => {
                     <div style={{ fontStyle: 'italic' }}>
                         Dengan penuh apresiasi,
                     </div>
-                    <div>
-                        充满爱意和期待，
+                    <div className="ch">
+                        诚挚祝福与期待，
                     </div>
                     <br />
                     <div>
                         You Tien Hoe & Desy Indahsari
                     </div>
-                    <div>
+                    <div className="ch">
                         何猷钿 & 黄詩佳
                     </div>
                 </Col>
