@@ -5,7 +5,7 @@
         text-align: center;
     }
 
-    padding: 0 3rem;
+    padding: 3rem;
 
     div[class^="col"] > div {
         margin-bottom: 1em;
@@ -30,8 +30,11 @@
         }
 
         label {
-            font-variant: small-caps;
-            // font-weight: 500;
+            // font-variant: small-caps;
+            // background-color: #ffd4a3;
+            font-weight:700;
+            font-size: larger;
+            font-family: 'Marshmallow';
         }
 
         .text-muted {
