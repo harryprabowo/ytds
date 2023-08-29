@@ -265,7 +265,8 @@ html {
     color:#ffd4a3;
     .modal-header {
         text-align: center;
-        justify-content: center;
+        display: initial;
+        // justify-content: center;
         border-color:#FFC107;
     }
     .modal-body {

@@ -1,15 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8" />
-    <title>Wedding RSVP | You Tien Hoe & Desy Indahsari</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <link rel="stylesheet" type="text/css" href="../styles/email.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Josefin+Sans&display=swap"
+        rel="stylesheet">
 </head>
 
-<body>
-    {{{body}}}
+<body style="font-family: 'Josefin Sans', sans-serif;
+            font-size: medium;
+            background-image: url("https://i.pinimg.com/originals/0d/7f/93/0d7f93e7d76b0057a51266bd37dbf5b2.png");
+            background-size:cover;
+            color: #e5c070;">
+    <div class="gatsby-header gatsby" style="margin-top: 5rem;
+            text-align: center;
+            color: #fff;
+            padding: 20px 0;
+            margin-bottom: -4rem;">
+        <h1 style="font-family: 'Cinzel Decorative', serif;
+            font-size: 24pt;
+            margin: 0;
+            color: #e5c070;">꧁RSVP꧂</h1>
+        <hr style="border-color: #e5c070;" />
+        <h2 style="font-family: 'Cinzel Decorative', serif;
+            font-weight: 900;
+            font-size: 24pt;
+            margin: 5pt;
+            color: #e5c070;">
+            You Tien Hoe
+            <br/>
+            &
+            <br/>
+            Desy Indahsari
+        </h2>
+    </div>
+    <div class="gatsby-content" style="margin: 0 auto;
+            padding: 2em;">
+        <div class="rsvp-detail" style="padding: 0 3rem;
+            text-align: justify;">
+            <p>Dear {{name}},</p>
+            <p>Thank you for confirming your attendance at our wedding. We are so excited to celebrate with you!</p>
+            <table style="width:100%; text-align:center">
+                <tr>
+                    {{#each venues}} 
+                    <td style="line-height: 15pt; width:33vw; word-break: break-all">
+                        <h2 style="font-family: 'Cinzel Decorative', serif;
+            font-weight: 900;
+            font-size: 24pt;
+            margin: 5pt;
+            color: #e5c070;">{{this.date}}</h2>
+                        <small>{{this.date_full}}</small>
+                        <br/>
+                        <small>{{this.timeStr}}</small>
+                        <p>
+                            <strong>{{this.label}}</strong>
+                        </p>
+                        <a href={{this.link}}>{{this.name}}</a>
+                    </td>
+                    {{/each}}
+                </tr>
+            </table>
+            <p>If you have any questions or need to update your RSVP, please don't hesitate to get in touch with us.</p>
+            <hr style="border-color: #e5c070;"/>
+            <p style="line-height: 13pt;">
+                You Tien Hoe: +65 9271 1545 | +6017 825 3062
+                <br />
+                Desy Indahsari: +65 8113 2189
+            </p>
+        </div>
+        <footer>
+            <p>See you soon!</p>
+        </footer>
+    </div>
+    <span style="opacity: 0"> {{ randomness }} </span>
 </body>
 
 </html>
