@@ -71,12 +71,12 @@ const HomePage = ({ venues, images, diets, submitRSVP }) => {
             >
                 <Modal.Header>
                     <Row>
-                        <Col>
+                        <Col lg={4} md={12}>
                             <Modal.Title>
                                 Thank you for your RSVP!
                             </Modal.Title>
                         </Col>
-                        <Col>
+                        <Col lg={4} md={12}>
                             <Modal.Title>
                                 Terima kasih telah mengisi RSVP!
                             </Modal.Title>
@@ -90,7 +90,7 @@ const HomePage = ({ venues, images, diets, submitRSVP }) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
-                        <Col>
+                        <Col lg={4} md={12}>
                             We are so excited to have you join us on our special day. Your presence will truly make it a celebration to remember.
                             <br />
                             <br />
@@ -99,7 +99,7 @@ const HomePage = ({ venues, images, diets, submitRSVP }) => {
                             <br />
                             Thank you again, and see you soon!
                         </Col>
-                        <Col>
+                        <Col lg={4} md={12}>
                             Kami sangat senang bisa merayakan hari istimewa kami bersama Anda. Kehadiran Anda akan membuat perayaan ini menjadi sangat berkesan.
                             <br />
                             <br />
