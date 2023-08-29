@@ -7,7 +7,7 @@ const cinzel = Cinzel_Decorative({ subsets: ['latin'], weight: ['700'] })
 const Venue = ({ venues, horizontal }) => {
     const dataSorted = venues.sort((a, b) => a.id - b.id)
 
-    const info = dataSorted.map(({ location, time, timezone,...rest }) => ({
+    const info = dataSorted.map(({ location, time, ...rest }) => ({
         ...rest,
         time: new Date(time),
         location: JSON.parse(JSON.stringify(location)),

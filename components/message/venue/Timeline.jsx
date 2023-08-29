@@ -29,7 +29,7 @@ export default function StepperTimeline({ data }) {
     return (
         <Timeline horizontal={!isMobile}>
             {
-                data.map(({ id, label, name, desc, location, time, dress_code }) => (
+                data.map(({ id, label, name, desc, location, time, timezone: timeZone, dress_code }) => (
                     <Timeline.Item key={id}>
                         <Timeline.Point />
                         <Timeline.Content>
@@ -44,7 +44,7 @@ export default function StepperTimeline({ data }) {
                                         {time.toLocaleDateString('default', { year: 'numeric' })}
                                     </td>
                                     <td>
-                                        {time.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' })}
+                                        {time.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', timeZone })} local time
                                     </td>
                                 </table>
                             </Timeline.Time>
