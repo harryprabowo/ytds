@@ -116,8 +116,8 @@ const TextID = () => {
     ]
 
     return (
-        <blockquote>
-            <div>
+        <blockquote style={{ fontStyle: 'italic' }}>
+            <div >
                 <span className="bolding super">
                     Yang terkasih&nbsp;
                 </span>  
@@ -184,11 +184,11 @@ const Message = ({venues}) => {
                     <br />
 
                     <div className="suffix suffix-in">
-                        <div>
+                        <div style={{ fontStyle: 'italic' }}>
                             Dengan penuh apresiasi,
                         </div>
                         <br />
-                        <div>
+                        <div style={{ fontStyle: 'italic' }}>
                             You Tien Hoe & Desy Indahsari
                         </div>
                     </div>
@@ -212,7 +212,7 @@ const Message = ({venues}) => {
                     <div>
                         With love and anticipation,
                     </div>
-                    <div>
+                    <div style={{ fontStyle: 'italic' }}>
                         Dengan penuh apresiasi,
                     </div>
                     <div>
