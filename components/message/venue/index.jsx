@@ -17,6 +17,7 @@ const Venue = ({ venues, horizontal }) => {
 
     return (
         <div className="timeline-container">
+            {console.log(venues, info)}
             <h1 className={cinzel.className}>Venues</h1>
             <StepperTimeline data={info} horizontal={horizontal} />
         </div>
