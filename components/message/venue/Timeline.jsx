@@ -2,11 +2,12 @@
 
 import { Timeline } from 'flowbite-react';
 import { TbMapPinSearch, TbBrandWaze } from "react-icons/tb";
-import { Button, ButtonGroup } from "react-bootstrap"
+import { Button, ButtonGroup, Col, Row } from "react-bootstrap"
 import { useWindowDimensions } from 'utils/window';
 import {useState, useEffect} from 'react'
 import "styles/timeline.scss"
 
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
 
 export default function StepperTimeline({ data }) {
     const [isMobile, setIsMobile] = useState(false)
@@ -32,8 +33,25 @@ export default function StepperTimeline({ data }) {
                     <Timeline.Item key={id}>
                         <Timeline.Point />
                         <Timeline.Content>
+                            <Timeline.Time>
+                                <table>
+                                    <td>
+                                        <h1>{time.getDate()}</h1>
+                                    </td>
+                                    <td>
+                                        {time.toLocaleDateString('default', { month: 'short' })}
+                                        <br />
+                                        {time.toLocaleDateString('default', { year: 'numeric' })}
+                                    </td>
+                                    <td>
+                                        {time.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' })}
+                                    </td>
+                                </table>
+                            </Timeline.Time>
                             <Timeline.Title>
-                                {label} | <strong>{name}</strong>
+                                <span style={{color: 'goldenrod'}}>{label}</span> {name}
+                            </Timeline.Title>
+                            <Timeline.Body>
                                 <ButtonGroup className="map-buttons">
                                     <Button variant="outline-primary" size="sm" href={location.gmaps.link} target="_blank" rel="noopener noreferrer">
                                         <TbMapPinSearch />
@@ -42,15 +60,13 @@ export default function StepperTimeline({ data }) {
                                         <TbBrandWaze />
                                     </Button>
                                 </ButtonGroup>
-                            </Timeline.Title>
-                            <Timeline.Time>
-                                <strong style={{ color: 'black', fontWeight: '1000' }}>{time}</strong>
-                            </Timeline.Time>
-                            <Timeline.Body>
                                 {desc}
                                 <br />
                                 <code>Dress code: {id === 3 ? <a style={{color: 'blue'}}  href="https://www.infogrades.com/arts-infographics/great-gatsby-dress-code/">Gatsby theme</a> : 'Smart casual'}</code>
+
+                                
                             </Timeline.Body>
+                            
                         </Timeline.Content>
                     </Timeline.Item>
                 ))

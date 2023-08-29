@@ -14,3 +14,13 @@
   font-family: 'Marshmallow';
   src: url('./HanyiSentyMarshmallow.ttf')
 }
+
+@font-face {
+  font-family: 'Cannes';
+  src: url('./Cannes.otf')
+}
+
+@font-face {
+  font-family: 'Deco';
+  src: url('./Market_Deco.ttf')
+}

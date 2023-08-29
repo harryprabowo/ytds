@@ -12,6 +12,16 @@
     }
 
     form {
+        button[type="submit"] {
+                width: 50%;
+            }
+
+        @media(max-width:768px) {
+            button[type='submit'] {
+                width: 100%;
+            }
+        }
+
         .css-13cymwt-control, .addl-class__control {
             // height: 2em;
             border-radius: 0;
@@ -32,9 +42,10 @@
         label {
             // font-variant: small-caps;
             // background-color: #ffd4a3;
-            font-weight:700;
-            font-size: larger;
-            font-family: 'Marshmallow';
+            // font-weight:700;
+            font-size: small;
+            opacity: 0.8;
+            // font-family: 'Marshmallow';
         }
 
         .text-muted {
@@ -60,15 +71,10 @@
         background-color: #222;
     }
 
-    button {
-        width: 50%;
-    }
+    // button {
+    //     width: 50%;
+    // }
 
-    @media(max-width:768px) {
-        button {
-            width: 100%;
-        }
-    }
 
     .card-header {
         border-bottom: 1px solid #ffd4a3;
@@ -83,6 +89,9 @@
             border: 1px solid #ffd4a3;
         }
         label {
+            font-size: large;
+            font-weight: bold;
+            font-variant-caps: small-caps;
             color:#ffd4a3 !important;
         }
 
@@ -96,7 +105,7 @@
             background-color: #333;
         }
 
-        a {
+        a, button {
             display: inline-flex;
             align-items: center;
             padding: 5px;
@@ -108,18 +117,16 @@
             }
         }
 
-        a.active {
+        a.active, button:hover {
             background-color: #ffd4a3;
+
             * {
-                color: #333
+                color: #333;
             }
             
-            .to-the-right {
-                display: block;
-            }
         }
 
-        a.disabled {
+        a.disabled, button.disabled {
             text-decoration: line-through;
             background: transparent;
 
@@ -132,3 +139,33 @@
 
 }
 
+.modal-content {
+    background-color: #222;
+    background-image: url("data:image/svg+xml,%3Csvg width='48' height='64' viewBox='0 0 48 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M48 28v-4L36 12 24 24 12 12 0 24v4l4 4-4 4v4l12 12 12-12 12 12 12-12v-4l-4-4 4-4zM8 32l-6-6 10-10 10 10-6 6 6 6-10 10L2 38l6-6zm12 0l4-4 4 4-4 4-4-4zm12 0l-6-6 10-10 10 10-6 6 6 6-10 10-10-10 6-6zM0 16L10 6 4 0h4l4 4 4-4h4l-6 6 10 10L34 6l-6-6h4l4 4 4-4h4l-6 6 10 10v4L36 8 24 20 12 8 0 20v-4zm0 32l10 10-6 6h4l4-4 4 4h4l-6-6 10-10 10 10-6 6h4l4-4 4 4h4l-6-6 10-10v-4L36 56 24 44 12 56 0 44v4z' fill='%23f4c640' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    color: #ffd4a3;
+
+    .modal-header {
+        text-align: center;
+        display: initial;
+        // justify-content: center;
+        border-color: #FFC107;
+    }
+
+    .modal-body {
+        background-color: #111;
+        // border: 0;
+
+        div[class*="col"] {
+            margin: 1em 0;
+        }
+    }
+
+    .modal-footer {
+        justify-content: center;
+        border-color: #FFC107;
+    }
+
+    button {
+        background-color: #FFC107;
+    }
+}
