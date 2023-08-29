@@ -62,7 +62,7 @@ const HomePage = ({ venues, images, diets, submitRSVP }) => {
                 }
             />
             <Modal
-                size="lg"
+                size="xl"
                 show={show}
                 onHide={() => setShow(false)}
                 backdrop="static"
@@ -70,11 +70,23 @@ const HomePage = ({ venues, images, diets, submitRSVP }) => {
                 centered
             >
                 <Modal.Header>
-                    <Modal.Title>
-                        Thank you for your RSVP!
-                        <br/>
-                        <span className='ch' style={{fontSize:'24pt'}}>感谢您的回复！</span>
-                    </Modal.Title>
+                    <Row>
+                        <Col>
+                            <Modal.Title>
+                                Thank you for your RSVP!
+                            </Modal.Title>
+                        </Col>
+                        <Col>
+                            <Modal.Title>
+                                Terima kasih telah mengisi RSVP!
+                            </Modal.Title>
+                        </Col>
+                        <Col>
+                            <Modal.Title>
+                                <span className='ch' style={{ fontSize: '24pt' }}>感谢您的回复！</span>
+                            </Modal.Title>
+                        </Col>
+                    </Row>
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
@@ -86,6 +98,15 @@ const HomePage = ({ venues, images, diets, submitRSVP }) => {
                             <br />
                             <br />
                             Thank you again, and see you soon!
+                        </Col>
+                        <Col>
+                            Kami sangat senang bisa merayakan hari istimewa kami bersama Anda. Kehadiran Anda akan membuat perayaan ini menjadi sangat berkesan.
+                            <br />
+                            <br />
+                            Sementara itu, jika Anda memiliki pertanyaan atau perlu mengubah RSVP Anda, jangan sungkan untuk menghubungi kami.
+                            <br />
+                            <br />
+                            Terima kasih sekali lagi, dan sampai bertemu!
                         </Col>
                         <Col className='ch'>
                             我们非常期待您能在我们特别的日子里加入我们。您的出席将使这个庆祝活动变得更加难忘。
