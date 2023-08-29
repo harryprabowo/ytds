@@ -1,9 +1,9 @@
-import { Great_Vibes, Playfair_Display, Playfair_Display_SC, Cinzel_Decorative } from 'next/font/google'
+import { Federo } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'styles/globals.css'
 import 'styles/base.scss'
 
-const font = Playfair_Display({subsets: ['latin']})
+const font = Federo({subsets: ['latin'], weight: '400'})
 
 export const metadata = {
   title: 'Wedding | You Tien Hoe & Desy Indahsari',

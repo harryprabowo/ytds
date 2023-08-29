@@ -30,12 +30,8 @@ ol[data-testid="timeline-component"] {
     }
 
     .map-buttons {
-        margin: 0 1em;
-
-        @media(max-width: 1400px) {
-            margin: 0;
-            display: block;
-        }
+        margin: 5pt 0;
+        display: block;
     }
 
     @media(max-width: 768px) {
