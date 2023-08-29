@@ -192,7 +192,9 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
                                         venues.map(({ label, id }) => (
                                             <div key={id} className="inline-venue">
                                                 <Form.Group controlId={label} className="inline-venue-checkbox">
-                                                    <Form.Check type="checkbox" isValid onChange={e => handleCheckVenue(e, id)} label={`${(errors[`diet_${id}`] ? '* ': '')}${label}`} />
+                                                    <Form.Check type="checkbox" className={errors[`diet_${id}`] ? "error" : ""} isValid onChange={e => handleCheckVenue(e, id)} label={
+                                                        `${(errors[`diet_${id}`] ? '* ' : '')}${label}`
+                                                    } />
                                                 </Form.Group>
                                                 <Nav.Item>
                                                     <Nav.Link eventKey={id} disabled={!nav[id - 1]} variant="warning" >

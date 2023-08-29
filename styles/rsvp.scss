@@ -86,6 +86,12 @@
             color:#ffd4a3 !important;
         }
 
+        .error {
+            label {
+                color: red !important;
+            }
+        }
+
         input:not(:checked) {
             background-color: #333;
         }
@@ -123,5 +129,6 @@
             // color: #ffd4a3;
         }
     }
+
 }
 
