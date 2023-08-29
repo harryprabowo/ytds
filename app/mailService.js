@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import handlebars from 'handlebars'
-import fs from "fs"
 import https from "https"
+import { _getPublicUrl } from "./dbService"
 
 function downloadFile(url) {
     return new Promise((resolve, reject) => {
@@ -20,7 +20,6 @@ function downloadFile(url) {
         });
     });
 }
-
 
 export const sendMail = async (
     to,
@@ -57,7 +56,8 @@ export const sendMail = async (
 
 
     // Read the email template
-    const templateSource = await downloadFile(process.env.TEMPLATE_URL);
+    const templateUrl = await _getPublicUrl('email-template.hbs')
+    const templateSource = await downloadFile(templateUrl);
     const template = handlebars.compile(templateSource);
     const html = template(data);
 

@@ -27,17 +27,21 @@ const _insert = async (table, payload) => {
     return JSON.parse(JSON.stringify(data))
 }
 
-const getImages = async (image_filename) => {
+export const _getPublicUrl = async (pathname, storageName = "media") => {
     const { data: { publicUrl }, error } = await client
         .storage
-        .from('media')
-        .getPublicUrl(`wedding/${image_filename}`)
+        .from(storageName)
+        .getPublicUrl(pathname)
 
     if (error) {
         throw new Error(error.message, { cause: error.source })
     }
 
     return publicUrl
+}
+
+const getImages = async (image_filename) => {
+    return await _getPublicUrl(`wedding/${image_filename}`)
 }
 
 const getVenues = async () => await _get('venue')
