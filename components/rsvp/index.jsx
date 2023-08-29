@@ -80,10 +80,22 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
             venueDetails: data
         }
 
-        const res = await submitRSVP(payload)
-        console.log(res)
-        setShow(true)
-        setLoading(false)
+        try {
+            const res = await submitRSVP(payload)
+            console.log(res)
+            setShow(true)
+        } catch (err) {
+            console.error(err)
+
+            if (err.message === 'duplicate key value violates unique constraint "rsvp_contact_key"') {
+                alert("You have previous RSVP records, please contact You Tien/Desy for any changes.")
+            } else {
+                alert(err.message)
+            }
+
+        } finally {
+            setLoading(false)
+        }
     }
 
     const venueOptions = venues.map(({ id, label }) => ({
@@ -175,12 +187,12 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
                         <Form.Control className="custom-form-control" type="hidden" value={venueSelected} {...register("venues")} />
                         <Nav variant="pills" className="flex-column">
                             <Row>
-                                <Col lg={4} md={5} sm={4} xs={5}>
+                                <Col lg={4} md={5} sm={4} xs={12}>
                                     {
                                         venues.map(({ label, id }) => (
                                             <div key={id} className="inline-venue">
                                                 <Form.Group controlId={label} className="inline-venue-checkbox">
-                                                    <Form.Check type="checkbox" isValid onChange={e => handleCheckVenue(e, id)} label={`${(errors[`diet_${id}`] ? '*': '')}${label}`} />
+                                                    <Form.Check type="checkbox" isValid onChange={e => handleCheckVenue(e, id)} label={`${(errors[`diet_${id}`] ? '* ': '')}${label}`} />
                                                 </Form.Group>
                                                 <Nav.Item>
                                                     <Nav.Link eventKey={id} disabled={!nav[id - 1]} variant="warning" >
@@ -200,7 +212,7 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
                                                 return (
                                                     <Tab.Pane eventKey={id} key={id}>
                                                         <Card bg="dark" >
-                                                            <Card.Header><strong>{label}</strong></Card.Header>
+                                                            <Card.Header><label>{label}</label></Card.Header>
                                                             <Card.Body>
                                                                 <Form.Group controlId={`partySize_${id}`}>
                                                                     <Form.Label>Party size | Jumlah Tamu | 人数</Form.Label>
@@ -302,7 +314,7 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
             <br />
             <Row>
                 <Col style={{ textAlign: 'center' }}>
-                    <Button type="submit" variant="warning" size="lg" block="true" disabled={!loading && Object.keys(errors).length !== 0}>
+                    <Button type="submit" variant="warning" size="lg" block="true" disabled={loading || Object.keys(errors).length !== 0}>
                         {loading ? 'Submitting...' : 'SUBMIT'}
                     </Button>
                 </Col>
