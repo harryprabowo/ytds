@@ -87,11 +87,7 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
         } catch (err) {
             console.error(err)
 
-            if (err.message === 'duplicate key value violates unique constraint "rsvp_contact_key"') {
-                alert("You have previous RSVP records, please contact You Tien/Desy for any changes.")
-            } else {
-                alert(err.message)
-            }
+            alert("Looks like you have submitted your RSVP before. If you believe you haven't, please contact You Tien/Desy :)")
 
         } finally {
             setLoading(false)
