@@ -336,7 +336,7 @@ const RSVP = (props) => {
 
     return (
         <div className="rsvp-container">
-            <h1 >꧁Répondez s&apos;il vous plaît꧂</h1>
+            <h1 className={limelight.className}>꧁Répondez s&apos;il vous plaît꧂</h1>
             <br />
             <Row style={{ margin: 0 }}>
                 <Col />
