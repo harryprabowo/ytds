@@ -3,7 +3,7 @@ import Map from "./Map"
 import StepperTimeline from "./Timeline"
 
 const cinzel = Cinzel_Decorative({ subsets: ['latin'], weight: ['700'] })
-const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
 
 const Venue = ({ venues, horizontal }) => {
     const dataSorted = venues.sort((a, b) => a.id - b.id)

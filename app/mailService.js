@@ -43,11 +43,15 @@ export const sendMail = async (
             let _date = new Date(time)
             let _location = JSON.parse(JSON.stringify(location))
 
+            const dateOpt = {
+                timeZone:  rest.id === 2 ? 'Asia/Jakarta' : 'Asia/Singapore'
+            }
+
             return ({
                 ...rest,
-                date: _date.getDate(),
-                date_full: _date.toLocaleString('default', { month: 'short', year: '2-digit' }),
-                timeStr: _date.toLocaleTimeString('en-US', { timeStyle: 'short' }),
+                date: _date.toLocaleString('default', { ...dateOpt, day: 'numeric' }),
+                date_full: _date.toLocaleString('default', { ...dateOpt, month: 'short', year: '2-digit' }),
+                timeStr: _date.toLocaleTimeString('en-US', { ...dateOpt, timeStyle: 'short' }),
                 link: _location.gmaps.link,
             })
         }),
