@@ -43,6 +43,21 @@ const getImages = async (image_filename) => {
 const getVenues = async () => await _get('venue')
 const getDiet = async () => await _get('diet')
 
+const getVenuesByRSVP = async (rsvpId) => {
+    const { data, error } = await client
+        .from('party')
+        .select(`
+            venue (*),
+            rsvp
+        `)
+        .eq('rsvp', rsvpId)
+    
+    if (error) {
+        throw new Error(error.message, { cause: error.source })
+    }
+    return (data.reduce((o, e) => ({ ...o, [e.rsvp]: e.rsvp in o ? [...o[e.rsvp], e.venue] : [e.venue] }), {}))
+}
+
 const submitRSVP = async ({
     name,
     email,
@@ -86,18 +101,20 @@ const submitRSVP = async ({
         party: party
     }
 
-    await sendRSVPMail(rsvpDetail)
+    // const rsvp = (await _get('rsvp'))[0]
+    const rsvpVenues = await getVenuesByRSVP(rsvpDetail.rsvp.id)
+
+    await sendMail(
+        rsvpDetail.rsvp.email, 
+        "Your RSVP for You Tien & Desy's Wedding is Confirmed!",
+        {
+            name: rsvpDetail.rsvp.name,
+            venues: rsvpVenues[rsvpDetail.rsvp.id]
+        }
+    )
+
     return rsvpDetail
 }
-
-const sendRSVPMail = async (rsvpDetail) => {
-    await sendMail(
-        rsvpDetail.rsvp.email,
-        "TEST",
-        "THIS IS A TEST FOR MY MEDIUM USERS"
-    )
-}
-
 export {
     getImages,
     getDiet,

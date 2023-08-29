@@ -81,6 +81,7 @@ const RSVPForm = ({ venues, diets, submitRSVP, setShow }) => {
         }
 
         const res = await submitRSVP(payload)
+        console.log(res)
         setShow(true)
         setLoading(false)
     }
