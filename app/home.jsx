@@ -37,6 +37,7 @@ const HomePage = ({ venues, images, diets, submitRSVP }) => {
                 // reset the state of your app so the error doesn't happen again
             }}
         >
+            {console.log(venues)}
             <ReactFullpage
                 navigation
                 pluginWrapper={pluginWrapper}
