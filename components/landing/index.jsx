@@ -93,7 +93,8 @@ const Text = () => (
             />
         </h1>
         <br/>
-        <h2  style={{ fontSize: '20pt' }}>꧁The Wedding꧂</h2>
+        <h2 style={{ fontSize: '20pt' }}>꧁The Wedding꧂</h2>
+        <h2 className='ch' style={{ fontSize: '30pt' }}>婚礼</h2>
         <Image alt="divider" src="https://static.vecteezy.com/system/resources/previews/012/634/581/non_2x/art-deco-outline-stroke-in-golden-color-for-classy-and-luxury-style-premium-vintage-line-art-design-element-free-png.png" height={0} width={300} />
     </div>
 )

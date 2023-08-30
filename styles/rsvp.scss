@@ -51,11 +51,19 @@
         .text-muted {
             color: white !important
         }
+
+        select option {
+            background-color: #222;
+        }
     }
 
     input {
         padding: 0;
         font-weight: bold;
+
+        &::placeholder {
+            color: #61584f;
+        }
     }
 
     input:focus, .addl-class__control--is-focused {
@@ -88,6 +96,7 @@
         input {
             border: 1px solid #ffd4a3;
         }
+        
         label {
             font-size: large;
             font-weight: bold;

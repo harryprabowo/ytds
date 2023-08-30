@@ -77,14 +77,13 @@ const submitRSVP = async ({
         ), {})
     }))
 
-
     const rsvp = await _insert(
         "rsvp",
         [
             {
                 name,
-                email,
-                contact,
+                email: email.toLowerCase(),
+                contact: contact.split(" ").join(""),
                 notes
             },
         ]
@@ -107,17 +106,18 @@ const submitRSVP = async ({
         party: party
     }
 
-    // const rsvp = (await _get('rsvp'))[0]
-    const rsvpVenues = await getVenuesByRSVP(rsvpDetail.rsvp.id)
+    if (email !== '') {
+        const rsvpVenues = await getVenuesByRSVP(rsvpDetail.rsvp.id)
 
-    await sendMail(
-        rsvpDetail.rsvp.email, 
-        "Your RSVP for You Tien & Desy's Wedding is Confirmed!",
-        {
-            name: rsvpDetail.rsvp.name,
-            venues: rsvpVenues[rsvpDetail.rsvp.id]
-        }
-    )
+        await sendMail(
+            rsvpDetail.rsvp.email,
+            "Your RSVP for You Tien & Desy's Wedding is Confirmed!",
+            {
+                name: rsvpDetail.rsvp.name,
+                venues: rsvpVenues[rsvpDetail.rsvp.id]
+            }
+        )
+    }
 
     return rsvpDetail
 }

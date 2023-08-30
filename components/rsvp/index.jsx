@@ -11,7 +11,7 @@ import "styles/rsvp.scss"
 const greatVibes = Cinzel_Decorative({ subsets: ['latin'], weight: ['700'] })
 const limelight = Limelight({ subsets: ['latin'], weight: ['400'] })
 
-const ConfirmModal = ({ show, setShow }) => {
+const ConfirmModal = ({ show, setShow, name }) => {
     return (
         <Modal
             size="xl"
@@ -42,7 +42,7 @@ const ConfirmModal = ({ show, setShow }) => {
                         <br />
                         Thank you again, and see you soon!
                     </Col>
-                    <Col lg={4} md={12} style={{fontStyle: 'italic'}}>
+                    <Col lg={4} md={12} style={{ fontStyle: 'italic' }}>
                         Kami sangat senang bisa merayakan hari istimewa kami bersama Anda. Kehadiran Anda akan membuat perayaan ini menjadi sangat berkesan.
                         <br />
                         <br />
@@ -126,7 +126,10 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
     const [whichActive, setWhichActive] = useState()
     const [loading, setLoading] = useState(false)
     const [venueSelected, setVenueSelected] = useState([])
+    const [diet, setDiet] = useState(0);
+
     const { register, handleSubmit, formState: { errors }, control, setError, clearErrors } = useForm();
+
     const onSubmit = async ({
         fullName: name,
         email,
@@ -134,7 +137,6 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
         notes,
         ...data
     }) => {
-        setLoading(true)
         const payload = {
             name,
             email,
@@ -145,6 +147,7 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
         }
 
         try {
+            setLoading(true)
             const res = await submitRSVP(payload)
             console.log(res)
             setShow(true)
@@ -163,14 +166,12 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
         label
     }))
 
-    const dietOptions = [
-        ...diets.map(({ id, name, desc }) => ({
+    const dietOptions = diets
+        .map(({ id, name, desc }) => ({
             value: id,
             label: name,
-
-        })),
-    ]
-
+        }))
+    
     const dietDetails = (_dietsSelected) => {
         return (
             <ul>
@@ -219,24 +220,23 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
             <Form onSubmit={handleSubmit(onSubmit)} >
                 <Row>
                     <Tab.Container id="left-tabs-example" activeKey={whichActive} onSelect={e => setWhichActive(parseInt(e))}>
-                        <Col lg={4} xs={12}>
+                        <Col lg={5} xs={12}>
                             <Form.Group controlId="fullName">
-                                <Form.Label>Full name<br/>Nama lengkap<br/>姓名</Form.Label>
-                                <Form.Control className="css-13cymwt-control" type="text" name="Full name" {...register("fullName", { required: 'We would love to know our esteemed guest' })} />
+                                <Form.Label>Full name<br />Nama lengkap<br />姓名</Form.Label>
+                                <Form.Control className="css-13cymwt-control" type="text" name="Full name" {...register("fullName", { required: 'Please provide your name/Mohon sebutkan nama Anda/请提供您的名字' })} />
                                 <Form.Text muted>
                                     <ErrorMessage errors={errors} name="fullName" />
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="email">
-                                <Form.Label>Email<br/>Surel<br/>电子邮箱</Form.Label>
-                                <Form.Control className="css-13cymwt-control" type="email" name="Email" {...register("email", { required: 'We would love to send our invitation card', pattern: /^\S+@\S+$/i })} />
+                                <Form.Label>Email (For invitation card)<br />Surel (Untuk kartu undangan)<br />电子邮箱 (用于邀请)</Form.Label>
+                                <Form.Control className="css-13cymwt-control" type="email" name="Email" placeholder="Optional/Opsional/可选" {...register("email", { pattern: /^\S+@\S+$/i })} />
                                 <Form.Text muted>
-                                    <ErrorMessage errors={errors} name="email" />
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group controlId="contact">
-                                <Form.Label>Contact<br/>Kontak<br/>联络号码</Form.Label>
-                                <Form.Control className="css-13cymwt-control" type="tel" name="Contact" {...register("contact", { required: 'We require your contact to confirm your RSVP', minLength: 6, maxLength: 12 })} />
+                                <Form.Label>Contact<br />Kontak<br />联络号码</Form.Label>
+                                <Form.Control className="css-13cymwt-control" type="tel" name="Contact" {...register("contact", { required: 'Please provide your contact details/Mohon sebutkan nomor Anda/请提供您的电话号码', minLength: 6, maxLength: 12 })} />
                                 <Form.Text muted>
                                     <ErrorMessage errors={errors} name="contact" />
                                 </Form.Text>
@@ -246,9 +246,8 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                                 <Form.Control as="textarea" className="css-13cymwt-control" type="text" name="Notes" {...register("notes")} />
                             </Form.Group>
                         </Col>
-                        <Col lg={1} xs={0} />
                         <Col>
-                            <Form.Label>Venue<br/>Lokasi<br/>地点</Form.Label>
+                            <Form.Label>Venue<br />Lokasi<br />地点</Form.Label>
                             <Form.Control className="custom-form-control" type="hidden" value={venueSelected} {...register("venues")} />
                             <Nav variant="pills" className="flex-column">
                                 <Row>
@@ -275,39 +274,33 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                                     <Col>
                                         <Tab.Content>
                                             {
-                                                venues.map(({ id, label }) => {
-                                                    return (
+                                                venues.map(({ id, label }) => (
                                                         <Tab.Pane eventKey={id} key={id}>
                                                             <Card bg="dark" >
-                                                                <Card.Header><label>{label}</label></Card.Header>
+                                                                <Card.Header><h2>{label}</h2></Card.Header>
                                                                 <Card.Body>
                                                                     <Form.Group controlId={`partySize_${id}`}>
-                                                                        <Form.Label>Party size<br/>Jumlah Tamu<br/>人数</Form.Label>
+                                                                        <Form.Label>Party size<br />Jumlah Tamu<br />人数</Form.Label>
                                                                         <Form.Control className="css-13cymwt-control" type="number" name={`partySize_${id}`} defaultValue={1} min={1} max={10} {...register(`partySize_${id}`, {
-                                                                            required: nav[id - 1] ? 'We would love to know your party size' : false, min: 1, max: 10, valueAsNumber: true, })} />
+                                                                            required: nav[id - 1] ? 'We would love to know your party size' : false, min: 1, max: 10, valueAsNumber: true,
+                                                                        })} />
                                                                         <Form.Text muted>
                                                                             <ErrorMessage errors={errors} name={`partySize_${id}`} />
                                                                         </Form.Text>
                                                                     </Form.Group>
                                                                     <br />
                                                                     <Form.Group controlId={`diet_${id}`}>
-                                                                        <Form.Label>Dietary Requirement<br/>Diet Khusus<br/>饮食</Form.Label>
-                                                                        <Controller
+                                                                        <Form.Label>Dietary Requirement<br />Diet Khusus<br />饮食</Form.Label>
+                                                                        <Form.Select
+                                                                            className="css-13cymwt-control"
                                                                             name={`diet_${id}`}
-                                                                            control={control}
-                                                                            rules={{ required: nav[id - 1] ? "We'd love to cater to your tastes" : false }}
-                                                                            render={({ field }) => (
-                                                                                <Select
-                                                                                    {...field}
-                                                                                    classNamePrefix="addl-class"
-                                                                                    options={dietOptions}
-                                                                                    styles={colourStyles}
-                                                                                // onChange={e => {
-                                                                                //     setDietsSelected(e.map(f => f.label))
-                                                                                // }}
-                                                                                />
-                                                                            )}
-                                                                        />
+                                                                            defaultChecked={0}
+                                                                            {...register(`diet_${id}`, { required: nav[id - 1] ? "We'd love to cater to your tastes" : false })}
+                                                                        >
+                                                                            {dietOptions.map(({ value, label }, i) => (
+                                                                                <option key={i+1} value={value}>{label}</option>
+                                                                            ))}
+                                                                        </Form.Select>
                                                                         <Form.Text muted>
                                                                             {/* {dietDetails(dietsSelected)} */}
                                                                             <ErrorMessage errors={errors} name={`diet_${id}`} />
@@ -317,7 +310,7 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                                                             </Card>
                                                         </Tab.Pane>
                                                     )
-                                                })
+                                                )
                                             }
                                         </Tab.Content>
                                     </Col>
@@ -329,8 +322,8 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                 <br />
                 <Row>
                     <Col style={{ textAlign: 'center' }}>
-                        <Button type="submit" variant="warning" size="lg"  disabled={loading || Object.keys(errors).length !== 0}>
-                            {loading ? 'Submitting...' : 'SUBMIT'}
+                        <Button type="submit" variant="warning" size="lg" disabled={loading || Object.keys(errors).length !== 0}>
+                            {loading ? 'Submitting... | 提交...' : 'SUBMIT | 提交'}
                         </Button>
                     </Col>
                 </Row>
@@ -344,7 +337,9 @@ const RSVP = (props) => {
 
     return (
         <div className="rsvp-container">
+            <h1>RSVP Form</h1>
             <h1 className={limelight.className}>꧁Répondez s&apos;il vous plaît꧂</h1>
+            <h1 className="ch">回复邀请表</h1>
             <br />
             <Row style={{ margin: 0 }}>
                 <Col />

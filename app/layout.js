@@ -6,8 +6,8 @@ import 'styles/base.scss'
 const font = Federo({subsets: ['latin'], weight: '400'})
 
 export const metadata = {
-  title: 'Wedding | You Tien Hoe & Desy Indahsari',
-  description: 'Wedding: You Tien Hoe & Desy Indahsari',
+  title: 'The Wedding (婚礼) | You Tien Hoe & Desy Indahsari',
+  description: 'The Wedding (婚礼): You Tien Hoe & Desy Indahsari',
 }
 
 const RootLayout = ({ children }) => (

@@ -13,4 +13,10 @@
         font-size: 30pt;
         margin: 0 2rem;
     }
+
+    @media(max-width:768px) {
+        .ch {
+            font-size: 40pt;
+        }
+    }
 }
