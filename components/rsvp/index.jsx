@@ -209,7 +209,7 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
 
     useEffect(() => {
         if (!nav.some(e => e)) {
-            setError('venues', { type: "custom", message: "Are you coming?" }, { shouldFocus: true })
+            setError('venues', { type: "custom", message: "Please select venue & provide details/Mohon pilih lokasi & berikan detail/请选择场地并提供详细信息" }, { shouldFocus: true })
         } else {
             clearErrors('venues')
         }
@@ -269,7 +269,19 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                                                 </div>
                                             ))
                                         }
-                                        <ErrorMessage errors={errors} name="venues" />
+                                        <Form.Text muted>
+                                            {errors.venues ? (
+                                                <>
+                                                    Please select venue & click the cog button to provide details.
+                                                    <br />
+                                                    <br />
+                                                    Silakan pilih lokasi & klik tombol roda gigi untuk mengisi detail.
+                                                    <br />
+                                                    <br />
+                                                    请选择场地并单击齿轮按钮以提供详细信息.
+                                                </>
+                                            ) : ""}
+                                        </Form.Text>
                                     </Col>
                                     <Col>
                                         <Tab.Content>
