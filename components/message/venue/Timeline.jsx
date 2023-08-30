@@ -53,8 +53,9 @@ export default function StepperTimeline({ data }) {
                                     </td>
                                 </table>
                             </Timeline.Time>
+                            <br/>
                             <Timeline.Title>
-                                <span style={{color: 'goldenrod'}}>{label}</span> @{name}
+                                <h1 style={{color: 'goldenrod', }}>{label}</h1>@{name}
                             </Timeline.Title>
                             <Timeline.Body>
                                 <ButtonGroup className="map-buttons">
