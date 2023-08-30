@@ -14,7 +14,7 @@ export default function StepperTimeline({ data }) {
 
     //choose the screen size 
     const handleResize = () => {
-        if (window.innerWidth < 1024) {
+        if (window.innerWidth < 1284) {
             setIsMobile(true)
         } else {
             setIsMobile(false)
