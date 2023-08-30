@@ -277,12 +277,12 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                                                 venues.map(({ id, label }) => (
                                                         <Tab.Pane eventKey={id} key={id}>
                                                             <Card bg="dark" >
-                                                                <Card.Header><h2>{label}</h2></Card.Header>
+                                                                <Card.Header><h2>={label}=</h2></Card.Header>
                                                                 <Card.Body>
                                                                     <Form.Group controlId={`partySize_${id}`}>
                                                                         <Form.Label>Party size<br />Jumlah Tamu<br />人数</Form.Label>
                                                                         <Form.Control className="css-13cymwt-control" type="number" name={`partySize_${id}`} defaultValue={1} min={1} max={10} {...register(`partySize_${id}`, {
-                                                                            required: nav[id - 1] ? 'We would love to know your party size' : false, min: 1, max: 10, valueAsNumber: true,
+                                                                            required: nav[id - 1] ? 'Please provide this detail/Mohon sebutkan detail ini/请提供此详细信息' : false, min: 1, max: 10, valueAsNumber: true,
                                                                         })} />
                                                                         <Form.Text muted>
                                                                             <ErrorMessage errors={errors} name={`partySize_${id}`} />
@@ -295,7 +295,7 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                                                                             className="css-13cymwt-control"
                                                                             name={`diet_${id}`}
                                                                             defaultChecked={0}
-                                                                            {...register(`diet_${id}`, { required: nav[id - 1] ? "We'd love to cater to your tastes" : false })}
+                                                                        {...register(`diet_${id}`, { required: nav[id - 1] ? "Please provide this detail/Mohon sebutkan detail ini/请提供此详细信息" : false })}
                                                                         >
                                                                             {dietOptions.map(({ value, label }, i) => (
                                                                                 <option key={i+1} value={value}>{label}</option>
@@ -337,9 +337,8 @@ const RSVP = (props) => {
 
     return (
         <div className="rsvp-container">
-            <h1>RSVP Form</h1>
-            <h1 className={limelight.className}>꧁Répondez s&apos;il vous plaît꧂</h1>
-            <h1 className="ch">回复邀请表</h1>
+            <h1 >꧁RSVP Form꧂</h1>
+            <h1 className="ch" style={{marginTop:'-15pt'}}>回复邀请表</h1>
             <br />
             <Row style={{ margin: 0 }}>
                 <Col />
