@@ -62,7 +62,7 @@ export default function StepperTimeline({ data }) {
                                 </ButtonGroup>
                                 {desc}
                                 <br />
-                                <code>Dress code: {id === 3 ? <a style={{color: 'blue'}}  href="https://www.infogrades.com/arts-infographics/great-gatsby-dress-code/">Gatsby theme</a> : 'Smart casual'}</code>
+                                <code>Dress code: {id === 3 ? <a style={{color: 'blue', textDecoration: 'underline'}}  href="https://www.infogrades.com/arts-infographics/great-gatsby-dress-code/">Gatsby theme</a> : 'Smart casual'}</code>
 
                                 
                             </Timeline.Body>

@@ -131,6 +131,7 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
         fullName: name,
         email,
         contact,
+        notes,
         ...data
     }) => {
         setLoading(true)
@@ -138,6 +139,7 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
             name,
             email,
             contact,
+            notes,
             venueSelected,
             venueDetails: data
         }
@@ -239,6 +241,10 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                                     <ErrorMessage errors={errors} name="contact" />
                                 </Form.Text>
                             </Form.Group>
+                            <Form.Group controlId="notes">
+                                <Form.Label>Notes<br />Catatan<br />备注</Form.Label>
+                                <Form.Control as="textarea" className="css-13cymwt-control" type="text" name="Notes" {...register("notes")} />
+                            </Form.Group>
                         </Col>
                         <Col lg={1} xs={0} />
                         <Col>
@@ -277,14 +283,15 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                                                                 <Card.Body>
                                                                     <Form.Group controlId={`partySize_${id}`}>
                                                                         <Form.Label>Party size<br/>Jumlah Tamu<br/>人数</Form.Label>
-                                                                        <Form.Control className="css-13cymwt-control" type="number" name={`partySize_${id}`} defaultValue={1} min={1} max={10} {...register(`partySize_${id}`, { required: nav[id - 1] ? 'We would love to know your party size' : false, min: 1, max: 10 })} />
+                                                                        <Form.Control className="css-13cymwt-control" type="number" name={`partySize_${id}`} defaultValue={1} min={1} max={10} {...register(`partySize_${id}`, {
+                                                                            required: nav[id - 1] ? 'We would love to know your party size' : false, min: 1, max: 10, valueAsNumber: true, })} />
                                                                         <Form.Text muted>
                                                                             <ErrorMessage errors={errors} name={`partySize_${id}`} />
                                                                         </Form.Text>
                                                                     </Form.Group>
                                                                     <br />
                                                                     <Form.Group controlId={`diet_${id}`}>
-                                                                        <Form.Label>Diet<br/>Diet<br/>饮食</Form.Label>
+                                                                        <Form.Label>Dietary Requirement<br/>Diet Khusus<br/>饮食</Form.Label>
                                                                         <Controller
                                                                             name={`diet_${id}`}
                                                                             control={control}

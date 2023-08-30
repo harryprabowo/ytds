@@ -66,6 +66,7 @@ const submitRSVP = async ({
     name,
     email,
     contact,
+    notes,
     venueSelected,
     venueDetails
 }) => {
@@ -84,6 +85,7 @@ const submitRSVP = async ({
                 name,
                 email,
                 contact,
+                notes
             },
         ]
     )
