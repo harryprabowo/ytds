@@ -22,6 +22,8 @@ export const IMAGES = [
   // "IMG_4493.4", below
 ]
 
+export const revalidate = 0
+
 export default async function Page() {
   // Fetch data directly in a Server Component
   const venues = await getVenues()
