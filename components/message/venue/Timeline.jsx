@@ -14,7 +14,7 @@ export default function StepperTimeline({ data }) {
 
     //choose the screen size 
     const handleResize = () => {
-        if (window.innerWidth < 1284) {
+        if (window.innerWidth < 1024) {
             setIsMobile(true)
         } else {
             setIsMobile(false)
@@ -25,6 +25,10 @@ export default function StepperTimeline({ data }) {
     useEffect(() => {
         window.addEventListener("resize", handleResize)
     })
+
+    useEffect(() => {
+        handleResize()
+    },[])
         
     return (
         <Timeline horizontal={!isMobile}>
@@ -53,7 +57,6 @@ export default function StepperTimeline({ data }) {
                                     </td>
                                 </table>
                             </Timeline.Time>
-                            <br/>
                             <Timeline.Title>
                                 <h1 style={{color: 'goldenrod', }}>{label}</h1>@{name}
                             </Timeline.Title>
