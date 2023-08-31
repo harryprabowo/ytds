@@ -236,7 +236,7 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                             </Form.Group>
                             <Form.Group controlId="contact">
                                 <Form.Label>Contact<br />Kontak<br />联络号码</Form.Label>
-                                <Form.Control className="css-13cymwt-control" type="tel" name="Contact" {...register("contact", { required: 'Please provide your contact details/Mohon sebutkan nomor Anda/请提供您的电话号码', minLength: 6, maxLength: 12 })} />
+                                <Form.Control className="css-13cymwt-control" type="tel" name="Contact" {...register("contact", { required: 'Please provide your contact details/Mohon sebutkan nomor Anda/请提供您的电话号码', minLength: 6, maxLength: 20 })} />
                                 <Form.Text muted>
                                     <ErrorMessage errors={errors} name="contact" />
                                 </Form.Text>
