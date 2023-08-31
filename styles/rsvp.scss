@@ -59,6 +59,11 @@
         .form-text {
             font-style: italic;
         }
+
+        textarea {
+            padding: inherit;
+            height: 80px;
+        }
     }
 
     input {

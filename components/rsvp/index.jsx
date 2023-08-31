@@ -331,7 +331,6 @@ const RSVPForm = ({ venues, diets, submitRSVP }) => {
                         </Col>
                     </Tab.Container>
                 </Row>
-                <br />
                 <Row>
                     <Col style={{ textAlign: 'center' }}>
                         <Button type="submit" variant="warning" size="lg" disabled={loading || Object.keys(errors).length !== 0}>
