@@ -2,11 +2,141 @@
 <html>
 
 <head>
+    <!--Help character display properly.-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--Set the initial scale of the email.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Force Outlook clients to render with a better MS engine.-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <!--Help prevent blue links and autolinking-->
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+    <!--prevent Apple from reformatting and zooming messages.-->
+    <meta name="x-apple-disable-message-reformatting">
+    
+    <!--target dark mode-->
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark only">
+    <!--[if (gte mso 9)|(IE)]><!-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!--<![endif]-->
+    
+    
+    <!-- Allow for better image rendering on Windows hi-DPI displays. -->
+    <!--[if mso]>
+    <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    
+    <!--to support dark mode meta tags-->
+    <style type="text/css">
+        :root {
+            color-scheme: light dark;
+            supported-color-schemes: light dark;
+        }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Josefin+Sans&display=swap"
         rel="stylesheet">
+
+
+    <!--default styles-->
+    <style>
+        .gmail-show {
+            display: none !important;
+        }
+    
+        .outlook-show {
+            display: none !important;
+        }
+    
+        .yahoo-show {
+            display: none !important;
+        }
+    
+        .default-hide {
+            display: none !important;
+            mso-hide: all;
+        }
+    
+        .default-line {
+            display: none !important;
+            mso-hide: all;
+        }
+    </style>
+    
+    <!--gmail styles-->
+    <style>
+        u+.body .gmail-show {
+            display: inline-block !important;
+        }
+    
+        u+.body .gmail-hide {
+            display: none !important;
+        }
+    
+        u+.body .default {
+            display: none !important;
+        }
+    
+        u+.body .default-hide {
+            display: inline-block !important;
+        }
+    
+        u+.body .default-line {
+            display: inline-block !important;
+        }
+    </style>
+    
+    <!--owa styles-->
+    <style>
+        [class~="x_outlook-show"] {
+            display: inline-block !important;
+        }
+    
+        [class~="x_outlook-hide"] {
+            display: none !important;
+        }
+    
+        [class~="x_default"] {
+            display: none !important;
+        }
+    
+        [class~="x_default-hide"] {
+            display: inline-block !important;
+        }
+    </style>
+    
+    <!--yahoo styles-->
+    <style>
+        .& .yahoo-show {
+            display: inline-block !important
+        }
+    
+        .& .yahoo-hide {
+            display: none !important
+        }
+    
+        .& .default {
+            display: none !important
+        }
+    
+        .& .default-hide {
+            display: inline-block !important
+        }
+    
+        .& .default-line {
+            display: inline-block !important;
+        }
+    </style>
 </head>
 
 <body style="font-family: 'Josefin Sans', sans-serif;
@@ -62,6 +192,29 @@
                         <a href={{this.link}}>{{this.name}}</a>
                     </td>
                     {{/each}}
+                </tr>
+                <tr>
+                    <td align="center" valign="top" style="padding-top: 35px;">
+                        <!--default-->
+                        <a class="default" href="https://campaigns.litmus.com/_email/test/newnewyork.ics" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><!--[if mso]><i style="letter-spacing: 25px;mso-font-width:-100%;mso-text-raise:30pt">&nbsp;</i><![endif]--><span style="mso-text-raise:15pt;">Add to your Calendar</span><!--[if mso]><i style="letter-spacing: 25px;mso-font-width:-100%">&nbsp;</i><![endif]--></a>
+                        
+                        <!--[if (gte mso 9)|(IE)]><!-->
+                        <a class="gmail-show" href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220112T180000Z%2F20220112T200000Z&details=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&location=New%20Earth&text=Welcome%20to%20the%20Motorway" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Google Calendar</span></a>
+                        
+                        <a class="outlook-show" href="https://outlook.office.com/calendar/0/deeplink/compose?body=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&enddt=2022-01-12T20%3A00%3A00%2B00%3A00&location=New%20Earth&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2022-01-12T18%3A00%3A00%2B00%3A00&subject=Welcome%20to%20the%20Motorway" class="cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Outlook Calendar</span></a>
+                        
+                        <a href="https://calendar.aol.com/?desc=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&dur=&et=20220112T190000Z&in_loc=New%20Earth&st=20220112T170000Z&title=Welcome%20to%20the%20Motorway&v=60" class="yahoo-show cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your AOL Calendar</span></a>&nbsp;&nbsp;
+                        
+                        <a href="https://calendar.yahoo.com/?desc=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&dur=&et=20220112T190000Z&in_loc=New%20Earth&st=20220112T170000Z&title=Welcome%20to%20the%20Motorway&v=60" class="yahoo-show cta btn-yellow" style="background-color: #F4D66C; font-size: 18px; font-family: Helvetica, Arial, sans-serif; font-weight:bold; text-decoration: none; padding: 14px 20px; color: #1D2025; border-radius: 5px; display:inline-block; mso-padding-alt:0; box-shadow:0 3px 6px rgba(0,0,0,.2);"><span style="mso-text-raise:15pt;">Add to your Yahoo Calendar</span></a>
+                        <!--<![endif]-->
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" style="padding-bottom: 40px;">
+                        <p style="font-size: 18px; line-height: 24px; margin: 20px 0 0 0;">
+                            <span class="default-hide"><a href="https://campaigns.litmus.com/_email/test/newnewyork.ics" target="_blank" style=" text-decoration: underline;">iCal file</a></span><span class="default-line">&nbsp;|&nbsp;</span><span class="outlook-hide"><a href="https://outlook.office.com/calendar/0/deeplink/compose?body=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&enddt=2022-01-12T20%3A00%3A00%2B00%3A00&location=New%20Earth&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2022-01-12T18%3A00%3A00%2B00%3A00&subject=Welcome%20to%20the%20Motorway" target="_blank" style=" text-decoration: underline;">Outlook.com</a> | <a href="https://outlook.office.com/calendar/0/deeplink/compose?body=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&enddt=2022-01-12T20%3A00%3A00%2B00%3A00&location=New%20Earth&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2022-01-12T18%3A00%3A00%2B00%3A00&subject=Welcome%20to%20the%20Motorway" target="_blank" style=" text-decoration: underline;">
+                            Office 365</a></span><span class="gmail-hide">&nbsp;|&nbsp;<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220112T180000Z%2F20220112T200000Z&details=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&location=New%20Earth&text=Welcome%20to%20the%20Motorway" target="_blank" style=" text-decoration: underline;">Google</a></span><span class="yahoo-hide">&nbsp;|&nbsp;<a href="https://calendar.aol.com/?desc=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&dur=&et=20220112T190000Z&in_loc=New%20Earth&st=20220112T170000Z&title=Welcome%20to%20the%20Motorway&v=60" target="_blank" style=" text-decoration: underline;">AOL</a> | <a href="https://calendar.yahoo.com/?desc=Learn%20all%20about%20the%20rules%20of%20the%20Motorway%20and%20how%20to%20access%20the%20fast%20lane.%0A%0Ahttps%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGridlock_%28Doctor_Who%29&dur=&et=20220112T190000Z&in_loc=New%20Earth&st=20220112T170000Z&title=Welcome%20to%20the%20Motorway&v=60" target="_blank" style=" text-decoration: underline;">Yahoo</a></span></p>
+                    </td>
                 </tr>
             </table>
             <p>If you have any questions or need to update your RSVP, please don't hesitate to get in touch with us.</p>
